@@ -21,7 +21,7 @@ To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://c
 pod 'UserDefaultsStore'
 ```
 
-### Carthage
+#### Carthage
 To integrate UserDefaultsStore using [Carthage](https://github.com/Carthage/Carthage), add the following to your Cartfile:
 ```
 github "omaralbeik/UserDefaultsStore"
