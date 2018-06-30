@@ -2,10 +2,9 @@ language: objective-c
 osx_image: xcode9.4
 
 env:
-  global:
-    - PROJECT='UserDefaultsStore.xcodeproj'
-    - SCHEME='UserDefaultsStore'
-    - DESTINATION='platform=iOS Simulator,name=iPhone X'
+  - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X'
+  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X'
+  - ACTION=test  PLATFORM=tvOS    DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
 
 before_install:
   - brew update
@@ -14,6 +13,6 @@ before_install:
 
 script:
   - set -o pipefail
-  - xcodebuild clean build test -project "$PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
+  - xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION | xcpretty
   - bash <(curl -s https://codecov.io/bash) -cF ios -J 'UserDefaultsStore'
   - pod lib lint
