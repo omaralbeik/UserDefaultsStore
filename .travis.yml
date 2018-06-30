@@ -15,5 +15,5 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild clean build test -project "$PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
-  - bash <(curl -s https://codecov.io/bash) -cF ios -J 'UserDefaultsStore'
+  - bash <(curl -s https://codecov.io/bash)
   - pod lib lint
