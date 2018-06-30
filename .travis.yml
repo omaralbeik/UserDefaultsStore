@@ -6,13 +6,9 @@ env:
   - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X'
   - ACTION=test  PLATFORM=tvOS    DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
 
-before_install:
-  - brew update
-  - gem install xcpretty
-  - brew outdated xctool || brew upgrade xctool
-
 script:
   - set -o pipefail
   - xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION | xcpretty
-  - bash <(curl -s https://codecov.io/bash) -cF ios -J 'UserDefaultsStore'
-  - pod lib lint
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
