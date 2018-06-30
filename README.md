@@ -10,7 +10,7 @@
 
 
 # tl;dr
-You love Swift's `Codable` protocol and use it everywhere, here is an easy and very light way to store - reasonable amount of 😅 - Codable objects, in a couple lines of code
+You love Swift's `Codable` protocol and use it everywhere, here is an easy and very light way to store - reasonable amount 😅 - of Codable objects, in a couple lines of code
 
 Let's say you have 2 structs; `User` and `Laptop` defined as bellow:
 ```swift
@@ -82,8 +82,29 @@ let usersCount = usersStore.objectsCount
 
 ```
 
+
+## Requirements
+- iOS 8.0+ / macOS 10.12+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 9+
+- Swift 4+
+
+
+## Installation
+
+#### CocoaPods
+To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org/), specify it in your Podfile:
+```ruby
+pod 'UserDefaultsStore'
+```
+
+#### Manually
+Add the [Sources](Sources/) folder to your Xcode project.
+
+
+
 ## Thanks
 Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths.
+
 
 ## License
 UserDefaultsStore is released under the MIT license. See [LICENSE](LICENSE) for more information.
