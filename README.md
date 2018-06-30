@@ -10,7 +10,7 @@
 
 
 # tl;dr
-You love Swift's `Codable` protocol and use it everywhere, here is an easy and very light way to store - reasonable amount 😅 - of Codable objects, in a couple lines of code
+You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrive -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
 
 
 ## Installation
@@ -19,6 +19,12 @@ You love Swift's `Codable` protocol and use it everywhere, here is an easy and v
 To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org/), specify it in your Podfile:
 ```ruby
 pod 'UserDefaultsStore'
+```
+
+### Carthage
+To integrate UserDefaultsStore using [Carthage](https://github.com/Carthage/Carthage), add the following to your Cartfile:
+```
+github "omaralbeik/UserDefaultsStore"
 ```
 
 #### Manually
@@ -64,15 +70,15 @@ struct Laptop: Codable, Identifiable {
 }
 ```
 
-* Notice how `User` uses `Int` for its id, while `Laptop` uses `String`!
+* Notice how `User` uses `Int` for its id, while `Laptop` uses `String`. Swift rocks 🤘
 
-### 2. Create UserDefaults Store
+### 2. Create UserDefaults Stores
 ```swift
 let usersStore = UserDefaultsStore<User>(uniqueIdentifier: "users")!
 let laptopsStore = UserDefaultsStore<Laptop>(uniqueIdentifier: "laptops")!
 ```
 
-### 3. Voilà, you're all set
+### 3. Voilà, you're all set!
 ```swift
 let macbook = try! Laptop(model: "A1278", name: "MacBook Pro")
 let john = try! User(userId: 1, firstName: "John", lastName: "Appleseed", laptop: macbook)
