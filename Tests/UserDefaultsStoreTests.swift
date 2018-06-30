@@ -56,60 +56,60 @@ final class UserDefaultsStoreTests: XCTestCase {
 		let store = createFreshUsersStore()!
 		store.deleteAll()
 
-		try! store.set(john)
+		try! store.save(john)
 		XCTAssertEqual(store.objectsCount, 1)
-		XCTAssertEqual(store.getAll(), [john])
+		XCTAssertEqual(store.allObjects(), [john])
 	}
 
 	func testGetObject() {
 		let store = createFreshUsersStore()!
 
-		try! store.set(johnson)
-		XCTAssertNoThrow(try store.get(id: 2))
-		let user = try! store.get(id: 2)
+		try! store.save(johnson)
+		XCTAssertNoThrow(try store.object(witId: 2))
+		let user = try! store.object(witId: 2)
 		XCTAssertNotNil(user)
 
-		let invalidUser = try! store.get(id: 123)
+		let invalidUser = try? store.object(witId: 123)
 		XCTAssertNil(invalidUser)
 	}
 
 	func testDeleteObject() {
 		let store = createFreshUsersStore()!
 
-		try! store.set(james)
+		try! store.save(james)
 		XCTAssertEqual(store.objectsCount, 1)
 
-		store.delete(id: 3)
+		store.delete(witId: 3)
 		XCTAssertEqual(store.objectsCount, 0)
 	}
 
 	func testGetAll() {
 		let store = createFreshUsersStore()!
-		try! store.set(john)
-		XCTAssertEqual(store.getAll(), [john])
+		try! store.save(john)
+		XCTAssertEqual(store.allObjects(), [john])
 
-		try! store.set(johnson)
-		XCTAssert(store.getAll().contains(john))
-		XCTAssert(store.getAll().contains(johnson))
+		try! store.save(johnson)
+		XCTAssert(store.allObjects().contains(john))
+		XCTAssert(store.allObjects().contains(johnson))
 
-		try! store.set(james)
-		XCTAssert(store.getAll().contains(john))
-		XCTAssert(store.getAll().contains(johnson))
-		XCTAssert(store.getAll().contains(james))
+		try! store.save(james)
+		XCTAssert(store.allObjects().contains(john))
+		XCTAssert(store.allObjects().contains(johnson))
+		XCTAssert(store.allObjects().contains(james))
 	}
 
 	func testDeleteAll() {
 		let store = createFreshUsersStore()!
-		try! store.set(john)
-		try! store.set(johnson)
-		try! store.set(james)
+		try! store.save(john)
+		try! store.save(johnson)
+		try! store.save(james)
 
 		store.deleteAll()
-		XCTAssert(store.getAll().isEmpty)
+		XCTAssert(store.allObjects().isEmpty)
 	}
 
 	private func createFreshUsersStore() -> UserDefaultsStore<User>? {
-		let store = UserDefaultsStore<User>(uniqueIdentifier: "users")
+		let store = try? UserDefaultsStore<User>(uniqueIdentifier: "users")
 		store?.deleteAll()
 		return store
 	}

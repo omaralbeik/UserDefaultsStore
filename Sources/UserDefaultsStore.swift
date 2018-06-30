@@ -24,17 +24,17 @@
 import Foundation
 
 /// UserDefaults Store.
-public struct UserDefaultsStore<T: Codable & Identifiable> {
+open class UserDefaultsStore<T: Codable & Identifiable> {
 
 	/// Store's unique identifier.
 	/// **Warning**: Never use the same identifier for two different stores.
-	public let uniqueIdentifier: String
+	open let uniqueIdentifier: String
 
 	/// JSON encoder _(default is JSONEncoder())_
-	public var encoder = JSONEncoder()
+	open var encoder = JSONEncoder()
 
 	/// JSON decoder _(default is JSONDecoder())_
-	public var decoder = JSONDecoder()
+	open var decoder = JSONDecoder()
 
 	/// UserDefaults store.
 	private var store: UserDefaults
@@ -42,8 +42,10 @@ public struct UserDefaultsStore<T: Codable & Identifiable> {
 	/// Initialize a store with a given identifier.
 	///
 	/// - Parameter uniqueIdentifier: store's unique identifier.
-	public init?(uniqueIdentifier: String) {
-		guard let store = UserDefaults(suiteName: uniqueIdentifier) else { return nil }
+	required public init(uniqueIdentifier: String) throws {
+		guard let store = UserDefaults(suiteName: uniqueIdentifier) else {
+			throw UserDefaultsStoreError.unableToCreateStore
+		}
 		self.uniqueIdentifier = uniqueIdentifier
 		self.store = store
 	}
@@ -52,7 +54,7 @@ public struct UserDefaultsStore<T: Codable & Identifiable> {
 	///
 	/// - Parameter object: object to save.
 	/// - Throws: JSON encoding error.
-	public func set(_ object: T) throws {
+	public func save(_ object: T) throws {
 		let data = try encoder.encode(object)
 		store.set(data, forKey: key(for: object))
 		increaseCounter()
@@ -63,17 +65,18 @@ public struct UserDefaultsStore<T: Codable & Identifiable> {
 	/// - Parameter id: object id.
 	/// - Returns: optional object.
 	/// - Throws: JSON decoding error.
-	public func get(id: T.ID) throws -> T? {
-		guard let data = store.value(forKey: key(for: id)) as? Data else { return nil }
+	public func object(witId id: T.ID) throws -> T {
+		guard let data = store.value(forKey: key(for: id)) as? Data else {
+			throw UserDefaultsStoreError.objectNotFound
+		}
 		return try decoder.decode(T.self, from: data)
 	}
 
 	/// Delete an object by its id from store. _O(1)_
 	///
 	/// - Parameter id: object id.
-	public func delete(id: T.ID) {
-		guard let possibleObject = try? get(id: id) else { return }
-		guard let object = possibleObject else { return }
+	public func delete(witId id: T.ID) {
+		guard let object = try? object(witId: id) else { return }
 		store.removeObject(forKey: key(for: object))
 		decreaseCounter()
 	}
@@ -81,7 +84,7 @@ public struct UserDefaultsStore<T: Codable & Identifiable> {
 	/// Get all objects from store. _O(n)_
 	///
 	/// - Returns: array of all objects in store.
-	public func getAll() -> [T] {
+	public func allObjects() -> [T] {
 		guard objectsCount > 0 else { return [] }
 
 		var objects: [T] = []

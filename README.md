@@ -12,6 +12,21 @@
 # tl;dr
 You love Swift's `Codable` protocol and use it everywhere, here is an easy and very light way to store - reasonable amount 😅 - of Codable objects, in a couple lines of code
 
+
+## Installation
+
+#### CocoaPods
+To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org/), specify it in your Podfile:
+```ruby
+pod 'UserDefaultsStore'
+```
+
+#### Manually
+Add the [Sources](Sources/) folder to your Xcode project.
+
+
+## Usage
+
 Let's say you have 2 structs; `User` and `Laptop` defined as bellow:
 ```swift
 struct User: Codable {
@@ -87,19 +102,6 @@ let usersCount = usersStore.objectsCount
 - iOS 8.0+ / macOS 10.12+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 9+
 - Swift 4+
-
-
-## Installation
-
-#### CocoaPods
-To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org/), specify it in your Podfile:
-```ruby
-pod 'UserDefaultsStore'
-```
-
-#### Manually
-Add the [Sources](Sources/) folder to your Xcode project.
-
 
 
 ## Thanks

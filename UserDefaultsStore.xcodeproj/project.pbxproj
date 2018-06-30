@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0717A55C20E802A700E074CE /* UserDefaultsStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717A55B20E802A700E074CE /* UserDefaultsStoreError.swift */; };
 		07631B3820E7B01C00450B48 /* UserDefaultsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07631B3620E7B01C00450B48 /* UserDefaultsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07631B3F20E7B0AD00450B48 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07631B3E20E7B0AD00450B48 /* Identifiable.swift */; };
 		07631B4120E7B0BC00450B48 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07631B4020E7B0BC00450B48 /* UserDefaultsStore.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0717A55B20E802A700E074CE /* UserDefaultsStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreError.swift; sourceTree = "<group>"; };
 		07631B3320E7B01C00450B48 /* UserDefaultsStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserDefaultsStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07631B3620E7B01C00450B48 /* UserDefaultsStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultsStore.h; sourceTree = "<group>"; };
 		07631B3720E7B01C00450B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				07631B3620E7B01C00450B48 /* UserDefaultsStore.h */,
 				07631B3E20E7B0AD00450B48 /* Identifiable.swift */,
 				07631B4020E7B0BC00450B48 /* UserDefaultsStore.swift */,
+				0717A55B20E802A700E074CE /* UserDefaultsStoreError.swift */,
 				07631B3720E7B01C00450B48 /* Info.plist */,
 			);
 			path = Sources;
@@ -203,6 +206,7 @@
 			files = (
 				07631B4120E7B0BC00450B48 /* UserDefaultsStore.swift in Sources */,
 				07631B3F20E7B0AD00450B48 /* Identifiable.swift in Sources */,
+				0717A55C20E802A700E074CE /* UserDefaultsStoreError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
