@@ -9,12 +9,9 @@
 /* Begin PBXBuildFile section */
 		0765255E20E9009E00084819 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D520E8FA59009FB62C /* Identifiable.swift */; };
 		0765255F20E9009E00084819 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */; };
-		0765256020E9009E00084819 /* UserDefaultsStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */; };
 		0765256120E9009E00084819 /* UserDefaultsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C4B6D120E8F9C3009FB62C /* UserDefaultsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C4B6D220E8F9C8009FB62C /* UserDefaultsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07C4B6D820E8FA59009FB62C /* UserDefaultsStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */; };
-		07C4B6D920E8FA59009FB62C /* UserDefaultsStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */; };
 		07C4B6E020E8FA59009FB62C /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */; };
 		07C4B6E120E8FA59009FB62C /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */; };
 		07C4B6EA20E8FAEB009FB62C /* UserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6E920E8FAEB009FB62C /* UserDefaultsStoreTests.swift */; };
@@ -24,7 +21,6 @@
 		07C4B71020E8FC07009FB62C /* UserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6E920E8FAEB009FB62C /* UserDefaultsStoreTests.swift */; };
 		07C4B71120E8FC08009FB62C /* UserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6E920E8FAEB009FB62C /* UserDefaultsStoreTests.swift */; };
 		07C4B71320E8FC1D009FB62C /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */; };
-		07C4B71420E8FC1D009FB62C /* UserDefaultsStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */; };
 		07C4B71520E8FC1D009FB62C /* UserDefaultsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C4B71720E8FCCD009FB62C /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D520E8FA59009FB62C /* Identifiable.swift */; };
 		07C4B71820E8FCCE009FB62C /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4B6D520E8FA59009FB62C /* Identifiable.swift */; };
@@ -62,7 +58,6 @@
 		07C4B6AE20E8F6D6009FB62C /* UserDefaultsStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserDefaultsStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C4B6BB20E8F6E4009FB62C /* UserDefaultsStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserDefaultsStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C4B6C820E8F6F3009FB62C /* UserDefaultsStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserDefaultsStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreError.swift; sourceTree = "<group>"; };
 		07C4B6D520E8FA59009FB62C /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		07C4B6E720E8FAEB009FB62C /* UserDefaultsStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserDefaultsStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +150,6 @@
 			children = (
 				07C4B6D520E8FA59009FB62C /* Identifiable.swift */,
 				07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */,
-				07C4B6D420E8FA59009FB62C /* UserDefaultsStoreError.swift */,
 				07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */,
 				07C4B6A420E8F6C8009FB62C /* Info.plist */,
 			);
@@ -452,7 +446,6 @@
 			files = (
 				0765255F20E9009E00084819 /* UserDefaultsStore.swift in Sources */,
 				0765255E20E9009E00084819 /* Identifiable.swift in Sources */,
-				0765256020E9009E00084819 /* UserDefaultsStoreError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07C4B6D820E8FA59009FB62C /* UserDefaultsStoreError.swift in Sources */,
 				07C4B71720E8FCCD009FB62C /* Identifiable.swift in Sources */,
 				07C4B6E020E8FA59009FB62C /* UserDefaultsStore.swift in Sources */,
 			);
@@ -470,7 +462,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07C4B6D920E8FA59009FB62C /* UserDefaultsStoreError.swift in Sources */,
 				07C4B71820E8FCCE009FB62C /* Identifiable.swift in Sources */,
 				07C4B6E120E8FA59009FB62C /* UserDefaultsStore.swift in Sources */,
 			);
@@ -482,7 +473,6 @@
 			files = (
 				07C4B71320E8FC1D009FB62C /* UserDefaultsStore.swift in Sources */,
 				07C4B71920E8FCCF009FB62C /* Identifiable.swift in Sources */,
-				07C4B71420E8FC1D009FB62C /* UserDefaultsStoreError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

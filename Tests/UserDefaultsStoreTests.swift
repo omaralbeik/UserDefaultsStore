@@ -63,13 +63,11 @@ final class UserDefaultsStoreTests: XCTestCase {
 
 	func testGetObject() {
 		let store = createFreshUsersStore()!
-
 		try! store.save(johnson)
-		XCTAssertNoThrow(try store.object(witId: 2))
-		let user = try! store.object(witId: 2)
+		let user = store.object(withId: 2)
 		XCTAssertNotNil(user)
 
-		let invalidUser = try? store.object(witId: 123)
+		let invalidUser = store.object(withId: 123)
 		XCTAssertNil(invalidUser)
 	}
 
@@ -79,7 +77,7 @@ final class UserDefaultsStoreTests: XCTestCase {
 		try! store.save(james)
 		XCTAssertEqual(store.objectsCount, 1)
 
-		store.delete(witId: 3)
+		store.delete(withId: 3)
 		XCTAssertEqual(store.objectsCount, 0)
 	}
 
@@ -109,7 +107,7 @@ final class UserDefaultsStoreTests: XCTestCase {
 	}
 
 	private func createFreshUsersStore() -> UserDefaultsStore<User>? {
-		let store = try? UserDefaultsStore<User>(uniqueIdentifier: "users")
+		let store = UserDefaultsStore<User>(uniqueIdentifier: "users")
 		store?.deleteAll()
 		return store
 	}

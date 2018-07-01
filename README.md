@@ -80,17 +80,17 @@ let laptopsStore = UserDefaultsStore<Laptop>(uniqueIdentifier: "laptops")!
 
 ### 3. Voilà, you're all set!
 ```swift
-let macbook = try! Laptop(model: "A1278", name: "MacBook Pro")
-let john = try! User(userId: 1, firstName: "John", lastName: "Appleseed", laptop: macbook)
+let macbook = Laptop(model: "A1278", name: "MacBook Pro")
+let john = User(userId: 1, firstName: "John", lastName: "Appleseed", laptop: macbook)
 
 // Save an object to a store
 try! usersStore.save(john)
 
 // Get an object from store
-let user = try! store.object(withId: 1)
+let user = store.object(withId: 1)
 
 // Get all objects in a store
-let laptops = try! laptopsStore.allObjects()
+let laptops = laptopsStore.allObjects()
 
 // Delete an object from a store
 usersStore.delete(withId: 1)

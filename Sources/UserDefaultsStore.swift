@@ -42,10 +42,8 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 	/// Initialize a store with a given identifier.
 	///
 	/// - Parameter uniqueIdentifier: store's unique identifier.
-	required public init(uniqueIdentifier: String) throws {
-		guard let store = UserDefaults(suiteName: uniqueIdentifier) else {
-			throw UserDefaultsStoreError.unableToCreateStore
-		}
+	required public init?(uniqueIdentifier: String) {
+		guard let store = UserDefaults(suiteName: uniqueIdentifier) else { return nil }
 		self.uniqueIdentifier = uniqueIdentifier
 		self.store = store
 	}
@@ -64,19 +62,16 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 	///
 	/// - Parameter id: object id.
 	/// - Returns: optional object.
-	/// - Throws: JSON decoding error.
-	public func object(witId id: T.ID) throws -> T {
-		guard let data = store.value(forKey: key(for: id)) as? Data else {
-			throw UserDefaultsStoreError.objectNotFound
-		}
-		return try decoder.decode(T.self, from: data)
+	public func object(withId id: T.ID) -> T? {
+		guard let data = store.data(forKey: key(for: id)) else { return nil}
+		return try? decoder.decode(T.self, from: data)
 	}
 
 	/// Delete an object by its id from store. _O(1)_
 	///
 	/// - Parameter id: object id.
-	public func delete(witId id: T.ID) {
-		guard let object = try? object(witId: id) else { return }
+	public func delete(withId id: T.ID) {
+		guard let object = object(withId: id) else { return }
 		store.removeObject(forKey: key(for: object))
 		decreaseCounter()
 	}
