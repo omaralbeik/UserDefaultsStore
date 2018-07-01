@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07631B3220E7B01C00450B48"
+               BlueprintIdentifier = "07C4B69F20E8F6C8009FB62C"
                BuildableName = "UserDefaultsStore.framework"
-               BlueprintName = "UserDefaultsStore"
+               BlueprintName = "UserDefaultsStore iOS"
                ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07631B4620E7B55A00450B48"
+               BlueprintIdentifier = "07C4B6E620E8FAEB009FB62C"
                BuildableName = "UserDefaultsStoreTests.xctest"
-               BlueprintName = "UserDefaultsStoreTests"
+               BlueprintName = "UserDefaultsStoreTests iOS"
                ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07631B3220E7B01C00450B48"
+            BlueprintIdentifier = "07C4B69F20E8F6C8009FB62C"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore"
+            BlueprintName = "UserDefaultsStore iOS"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07631B3220E7B01C00450B48"
+            BlueprintIdentifier = "07C4B69F20E8F6C8009FB62C"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore"
+            BlueprintName = "UserDefaultsStore iOS"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07631B3220E7B01C00450B48"
+            BlueprintIdentifier = "07C4B69F20E8F6C8009FB62C"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore"
+            BlueprintName = "UserDefaultsStore iOS"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
