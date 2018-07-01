@@ -13,6 +13,11 @@ env:
     - WATCHOS_DESTINATION='name=Apple Watch - 42mm'
     - MACOS_DESTINATION='platform=OS X'
 
+before_install:
+  - bundle install
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
+
 script:
   - set -o pipefail
   - swift --version
