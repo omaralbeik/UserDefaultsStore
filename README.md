@@ -10,7 +10,7 @@
 
 
 # tl;dr
-You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrive -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
+You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrieve -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
 
 
 ## Installation
