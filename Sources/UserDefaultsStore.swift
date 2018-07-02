@@ -58,6 +58,25 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		increaseCounter()
 	}
 
+	/// Save an array of objects to store. _O(n)_
+	///
+	/// - Parameter objects: object to save.
+	/// - Throws: JSON encoding error.
+	public func save(_ objects: [T]) throws {
+		for object in objects {
+			try save(object)
+		}
+	}
+
+	/// Save an optional object (if not nil) to store. _O(1)_
+	///
+	/// - Parameter optionalObject: optional object to save.
+	/// - Throws: JSON encoding error.
+	public func save(_ optionalObject: T?) throws {
+		guard let object = optionalObject else { return }
+		try save(object)
+	}
+
 	/// Get an object from store by its id. _O(1)_
 	///
 	/// - Parameter id: object id.

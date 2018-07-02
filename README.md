@@ -86,6 +86,9 @@ let john = User(userId: 1, firstName: "John", lastName: "Appleseed", laptop: mac
 // Save an object to a store
 try! usersStore.save(john)
 
+// Save an array of objects to a store
+try! usersStore.save([jane, steve, jessica])
+
 // Get an object from store
 let user = store.object(withId: 1)
 

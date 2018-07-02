@@ -52,9 +52,32 @@ final class UserDefaultsStoreTests: XCTestCase {
 		XCTAssertNotNil(store)
 	}
 
-	func testSetObject() {
+	func testSaveObject() {
 		let store = createFreshUsersStore()!
 		store.deleteAll()
+
+		try! store.save(john)
+		XCTAssertEqual(store.objectsCount, 1)
+		XCTAssertEqual(store.allObjects(), [john])
+	}
+
+	func testSaveObjects() {
+		let store = createFreshUsersStore()!
+		store.deleteAll()
+
+		try! store.save([john, johnson, james])
+		XCTAssertEqual(store.objectsCount, 3)
+		XCTAssert(store.allObjects().contains(john))
+		XCTAssert(store.allObjects().contains(johnson))
+		XCTAssert(store.allObjects().contains(james))
+	}
+
+	func testSaveOptional() {
+		let store = createFreshUsersStore()!
+		store.deleteAll()
+
+		try! store.save(nil)
+		XCTAssertEqual(store.objectsCount, 0)
 
 		try! store.save(john)
 		XCTAssertEqual(store.objectsCount, 1)
