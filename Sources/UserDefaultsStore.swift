@@ -27,19 +27,20 @@ import Foundation
 open class UserDefaultsStore<T: Codable & Identifiable> {
 
 	/// Store's unique identifier.
-	/// **Warning**: Never use the same identifier for two different stores.
+	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	open let uniqueIdentifier: String
 
-	/// JSON encoder _(default is JSONEncoder())_
+	/// JSON encoder. _(default is JSONEncoder())_
 	open var encoder = JSONEncoder()
 
-	/// JSON decoder _(default is JSONDecoder())_
+	/// JSON decoder. _(default is JSONDecoder())_
 	open var decoder = JSONDecoder()
 
 	/// UserDefaults store.
 	private var store: UserDefaults
 
-	/// Initialize a store with a given identifier.
+	/// Initialize store with given identifier.
+	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	///
 	/// - Parameter uniqueIdentifier: store's unique identifier.
 	required public init?(uniqueIdentifier: String) {
@@ -48,7 +49,7 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		self.store = store
 	}
 
-	/// Save an object to store. _O(1)_
+	/// Save object to store. _O(1)_
 	///
 	/// - Parameter object: object to save.
 	/// - Throws: JSON encoding error.
@@ -58,7 +59,16 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		increaseCounter()
 	}
 
-	/// Save an array of objects to store. _O(n)_
+	/// Save optional object (if not nil) to store. _O(n)_
+	///
+	/// - Parameter optionalObject: optional object to save.
+	/// - Throws: JSON encoding error.
+	public func save(_ optionalObject: T?) throws {
+		guard let object = optionalObject else { return }
+		try save(object)
+	}
+
+	/// Save array of objects to store. _O(n)_
 	///
 	/// - Parameter objects: object to save.
 	/// - Throws: JSON encoding error.
@@ -68,31 +78,21 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		}
 	}
 
-	/// Save an optional object (if not nil) to store. _O(1)_
-	///
-	/// - Parameter optionalObject: optional object to save.
-	/// - Throws: JSON encoding error.
-	public func save(_ optionalObject: T?) throws {
-		guard let object = optionalObject else { return }
-		try save(object)
-	}
-
-	/// Get an object from store by its id. _O(1)_
+	/// Get object from store by its id. _O(1)_
 	///
 	/// - Parameter id: object id.
 	/// - Returns: optional object.
 	public func object(withId id: T.ID) -> T? {
-		guard let data = store.data(forKey: key(for: id)) else { return nil}
+		guard let data = store.data(forKey: key(for: id)) else { return nil }
 		return try? decoder.decode(T.self, from: data)
 	}
 
-	/// Delete an object by its id from store. _O(1)_
+	/// Get array of objects from store for array of id values. _O(1)_
 	///
-	/// - Parameter id: object id.
-	public func delete(withId id: T.ID) {
-		guard let object = object(withId: id) else { return }
-		store.removeObject(forKey: key(for: object))
-		decreaseCounter()
+	/// - Parameter ids: array of ids.
+	/// - Returns: array of objects with the given ids.
+	public func objects(withIds ids: [T.ID]) -> [T] {
+		return ids.compactMap { object(withId: $0) }
 	}
 
 	/// Get all objects from store. _O(n)_
@@ -101,14 +101,29 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 	public func allObjects() -> [T] {
 		guard objectsCount > 0 else { return [] }
 
-		var objects: [T] = []
-		for key in store.dictionaryRepresentation().keys {
-			guard isObjectKey(key) else { continue }
-			guard let data = store.data(forKey: key) else { continue }
-			guard let object = try? decoder.decode(T.self, from: data) else { continue }
-			objects.append(object)
+		return store.dictionaryRepresentation().keys.compactMap { key -> T? in
+			guard isObjectKey(key) else { return nil }
+			guard let data = store.data(forKey: key) else { return nil }
+			return try? decoder.decode(T.self, from: data)
 		}
-		return objects
+	}
+
+	/// Delete object by its id from store. _O(1)_
+	///
+	/// - Parameter id: object id.
+	public func delete(withId id: T.ID) {
+		guard let object = object(withId: id) else { return }
+		store.removeObject(forKey: key(for: object))
+		decreaseCounter()
+	}
+
+	/// Delete objects with ids from given ids array. _O(1)_
+	///
+	/// - Parameter ids: array of ids.
+	public func delete(withIds ids: [T.ID]) {
+		for id in ids {
+			delete(withId: id)
+		}
 	}
 
 	/// Delete all objects in store. _O(1)_
