@@ -148,9 +148,9 @@
 		07C4B6D020E8F7A4009FB62C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */,
 				07C4B6D520E8FA59009FB62C /* Identifiable.swift */,
 				07C4B6D620E8FA59009FB62C /* UserDefaultsStore.swift */,
-				07C4B6A320E8F6C8009FB62C /* UserDefaultsStore.h */,
 				07C4B6A420E8F6C8009FB62C /* Info.plist */,
 			);
 			path = Sources;
