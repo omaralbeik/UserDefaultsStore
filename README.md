@@ -2,8 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master)](https://travis-ci.org/omaralbeik/UserDefaultsStore)
 [![Platforms](https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat)](https://github.com/omaralbeik/UserDefaultsStore)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1549c8f70ac70be33fb0/maintainability)](https://codeclimate.com/github/omaralbeik/UserDefaultsStore/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/1549c8f70ac70be33fb0/test_coverage)](https://codeclimate.com/github/omaralbeik/UserDefaultsStore/test_coverage)
+[![Test Coverage](https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg)](https://codecov.io/gh/omaralbeik/UserDefaultsStore)
 [![Cocoapods](https://img.shields.io/cocoapods/v/UserDefaultsStore.svg)](https://cocoapods.org/pods/UserDefaultsStore)
 [![Swift](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-9.4-blue.svg)](https://developer.apple.com/xcode)
