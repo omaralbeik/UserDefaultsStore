@@ -1,16 +1,16 @@
-<p align="center"><img src="Assets/logo.png" alt="UserDefalutsStore" height="300px"></p>
+<p align="center">
+  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/master/Assets/logo.svg" title="UserDefaultsStore">
+</p>
 
-
-
-# UserDefaultsStore
-
-[![Build Status](https://api.travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master)](https://travis-ci.org/omaralbeik/UserDefaultsStore)
-[![Platforms](https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat)](https://github.com/omaralbeik/UserDefaultsStore)
-[![Test Coverage](https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg)](https://codecov.io/gh/omaralbeik/UserDefaultsStore)
-[![Cocoapods](https://img.shields.io/cocoapods/v/UserDefaultsStore.svg)](https://cocoapods.org/pods/UserDefaultsStore)
-[![Swift](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org)
-[![Xcode](https://img.shields.io/badge/Xcode-9.4-blue.svg)](https://developer.apple.com/xcode)
-[![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://travis-ci.org/omaralbeik/UserDefaultsStore"><img src="https://travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg" alt="Test Coverage" /></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
+  <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
+  <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg" alt="Swift" /></a>
+  <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-9.4-blue.svg" alt="Xcode"></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
+</p>
 
 
 # tl;dr
