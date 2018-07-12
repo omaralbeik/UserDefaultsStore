@@ -121,5 +121,9 @@ let usersCount = usersStore.objectsCount
 Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths.
 
 
+## Credits
+Icon made by [freepik](https://www.flaticon.com/authors/freepik) from [flaticon.com](www.flaticon.com).
+
+
 ## License
 UserDefaultsStore is released under the MIT license. See [LICENSE](LICENSE) for more information.
