@@ -166,6 +166,28 @@ final class UserDefaultsStoreTests: XCTestCase {
 		XCTAssert(store.allObjects().isEmpty)
 	}
 
+	func testHasObject() {
+		let store = createFreshUsersStore()!
+		XCTAssertFalse(store.hasObject(withId: 10))
+
+		XCTAssertNoThrow(try store.save(john))
+		XCTAssert(store.hasObject(withId: john.userId))
+	}
+
+	func testForEach() {
+		let store = createFreshUsersStore()!
+
+		let users = [john, johnson, james]
+		XCTAssertNoThrow(try store.save(users))
+
+		var counter = 0
+		store.forEach { user in
+			XCTAssert(users.contains(user))
+			counter += 1
+		}
+		XCTAssertEqual(counter, 3)
+	}
+
 	private func createFreshUsersStore() -> UserDefaultsStore<User>? {
 		let store = UserDefaultsStore<User>(uniqueIdentifier: "users")
 		store?.deleteAll()

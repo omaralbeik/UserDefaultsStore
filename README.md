@@ -99,6 +99,14 @@ let user = store.object(withId: 1)
 // Get all objects in a store
 let laptops = laptopsStore.allObjects()
 
+// Check if store has an object
+print(usersStore.hasObject(withId: 10)) // false
+
+// Iterate over all objects in a store
+laptopsStore.forEach { laptop in
+    print(laptop.name)
+}
+
 // Delete an object from a store
 usersStore.delete(withId: 1)
 
@@ -119,6 +127,10 @@ let usersCount = usersStore.objectsCount
 
 ## Thanks
 Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths.
+
+
+## Credits
+Icon made by [freepik](https://www.flaticon.com/authors/freepik) from [flaticon.com](www.flaticon.com).
 
 
 ## License
