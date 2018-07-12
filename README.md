@@ -99,6 +99,14 @@ let user = store.object(withId: 1)
 // Get all objects in a store
 let laptops = laptopsStore.allObjects()
 
+// Check if store has an object
+print(usersStore.hasObject(withId: 10)) // false
+
+// Iterate over all objects in a store
+laptopsStore.forEach { laptop in
+    print(laptop.name)
+}
+
 // Delete an object from a store
 usersStore.delete(withId: 1)
 

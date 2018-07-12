@@ -136,7 +136,7 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		return store.integer(forKey: counterKey)
 	}
 
-	/// Check if store has object with given id.
+	/// Check if store has object with given id. _O(1)_
 	///
 	/// - Parameter id: object id to check for.
 	/// - Returns: true if the store has an object with the given id.
@@ -144,7 +144,7 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 		return object(withId: id) != nil
 	}
 
-	/// Iterate over all objects in store.
+	/// Iterate over all objects in store. _O(n)_
 	///
 	/// - Parameter object: iteration block.
 	public func forEach(_ object: (T) -> Void) {
