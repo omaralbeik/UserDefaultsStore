@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/master/Assets/logo.svg" title="UserDefaultsStore">
+  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/master/Assets/readme-logo.svg" title="UserDefaultsStore">
 </p>
 
 <p align="center">
