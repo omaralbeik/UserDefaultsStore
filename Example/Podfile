@@ -1,0 +1,9 @@
+platform :ios, '10.0'
+
+target 'HNFeed' do
+
+  use_frameworks!
+  pod 'UserDefaultsStore'
+  pod 'Moya'
+
+end
