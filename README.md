@@ -20,7 +20,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 ## Installation
 
 #### CocoaPods
-To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org/), specify it in your Podfile:
+To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org), specify it in your Podfile:
 ```ruby
 pod 'UserDefaultsStore'
 ```
@@ -32,7 +32,7 @@ github "omaralbeik/UserDefaultsStore"
 ```
 
 #### Manually
-Add the [Sources](Sources/) folder to your Xcode project.
+Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources) folder to your Xcode project.
 
 
 ## Usage
@@ -130,8 +130,8 @@ Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article]
 
 
 ## Credits
-Icon made by [freepik](https://www.flaticon.com/authors/freepik) from [flaticon.com](www.flaticon.com).
+Icon made by [freepik](https://www.flaticon.com/authors/freepik) from [flaticon.com](https://www.flaticon.com).
 
 
 ## License
-UserDefaultsStore is released under the MIT license. See [LICENSE](LICENSE) for more information.
+UserDefaultsStore is released under the MIT license. See [LICENSE](https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE) for more information.
