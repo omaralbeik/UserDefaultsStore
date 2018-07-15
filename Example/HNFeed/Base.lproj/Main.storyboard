@@ -78,7 +78,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="185-uj-DUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="143"/>
+            <point key="canvasLocation" x="366" y="869"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="fnH-0G-Js5">
@@ -92,18 +92,18 @@
                                 <rect key="frame" x="178" y="401" width="20" height="20"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nzc-EB-Xbp">
-                                <rect key="frame" x="113" y="306" width="149" height="75"/>
+                                <rect key="frame" x="8" y="306" width="359" height="75"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPO-GG-Atu">
-                                        <rect key="frame" x="0.0" y="0.0" width="149" height="41"/>
+                                        <rect key="frame" x="82" y="0.0" width="195" height="41"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <state key="normal" title="Fetch Stories"/>
+                                        <state key="normal" title="Fetch Top Stories"/>
                                         <connections>
                                             <action selector="didTapFetchButton:" destination="L23-Ub-gUI" eventType="touchUpInside" id="Pyq-MQ-9hf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCb-9o-DIr">
-                                        <rect key="frame" x="3" y="45" width="143" height="30"/>
+                                        <rect key="frame" x="108" y="45" width="143" height="30"/>
                                         <state key="normal" title="Load Cached Stories"/>
                                         <connections>
                                             <action selector="didTapLoadCachedButton:" destination="L23-Ub-gUI" eventType="touchUpInside" id="7SS-sc-qhy"/>
@@ -116,6 +116,8 @@
                         <constraints>
                             <constraint firstItem="nzc-EB-Xbp" firstAttribute="centerY" secondItem="zci-ka-KfU" secondAttribute="centerY" id="1HQ-F8-ENB"/>
                             <constraint firstItem="nzc-EB-Xbp" firstAttribute="centerX" secondItem="zci-ka-KfU" secondAttribute="centerX" id="G8e-bK-dZ7"/>
+                            <constraint firstItem="nzc-EB-Xbp" firstAttribute="leading" secondItem="zci-ka-KfU" secondAttribute="leading" constant="8" id="MmX-Ni-IU9"/>
+                            <constraint firstItem="zci-ka-KfU" firstAttribute="trailing" secondItem="nzc-EB-Xbp" secondAttribute="trailing" constant="8" id="Rio-BH-Vhp"/>
                             <constraint firstItem="0IY-TN-2K5" firstAttribute="top" secondItem="nzc-EB-Xbp" secondAttribute="bottom" constant="20" id="UuS-sP-FaD"/>
                             <constraint firstItem="0IY-TN-2K5" firstAttribute="centerX" secondItem="zci-ka-KfU" secondAttribute="centerX" id="m8d-gI-dux"/>
                         </constraints>
@@ -128,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epg-9r-ASK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-454" y="144"/>
+            <point key="canvasLocation" x="-423" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGW-RR-3ph">
@@ -146,7 +148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wi8-c7-cM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416.80000000000001" y="142.57871064467767"/>
+            <point key="canvasLocation" x="366" y="143"/>
         </scene>
     </scenes>
 </document>

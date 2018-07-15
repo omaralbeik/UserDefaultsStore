@@ -15,6 +15,5 @@ struct HNItem: Codable, Identifiable {
 	var id: Int
 	var title: String?
 	var url: URL?
-	var time: Date
 
 }
