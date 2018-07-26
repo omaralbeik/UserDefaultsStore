@@ -118,11 +118,6 @@ let usersCount = usersStore.objectsCount
 
 ```
 
-## Example Project
-
-[HNFeed](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Example) is a simple iOS application to fetch and cache top stories from the [Hacker News API](https://github.com/HackerNews/API).
-
-
 ## Requirements
 - iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 9+
