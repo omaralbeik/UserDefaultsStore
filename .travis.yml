@@ -13,6 +13,6 @@ before_install:
   - brew outdated xctool || brew upgrade xctool
 
 script:
-  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -derivedDataPath $DERIVED_DATA -destination "$DESTINATION" $ACTION | xcpretty
+  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -derivedDataPath $DERIVED_DATA -destination "$DESTINATION" $ACTION
 after_success:
   - bash <(curl -s https://codecov.io/bash) -D /tmp/UserDefaultsStore
