@@ -2,9 +2,9 @@ language: objective-c
 osx_image: xcode9.4
 
 env:
-  - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X' DERIVED_DATA=${1:-/tmp/UserDefaultsStore}
-  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X' DERIVED_DATA=${1:-/tmp/UserDefaultsStore}
-  - ACTION=test  PLATFORM=tvOS    DESTINATION='platform=tvOS Simulator,name=Apple TV 4K (at 1080p)' DERIVED_DATA=${1:-/tmp/UserDefaultsStore}
+  - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X'
+  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X'
+  - ACTION=test  PLATFORM=tvOS    DESTINATION='platform=tvOS Simulator,name=Apple TV 4K (at 1080p)'
 
 before_install:
   - bundle install
@@ -12,6 +12,6 @@ before_install:
   - brew outdated xctool || brew upgrade xctool
 
 script:
-  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -derivedDataPath $DERIVED_DATA -enableCodeCoverage YES -destination "$DESTINATION" $ACTION
+  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -enableCodeCoverage YES -destination "$DESTINATION" $ACTION
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -D /tmp/UserDefaultsStore
+  - bash <(curl -s https://codecov.io/bash)
