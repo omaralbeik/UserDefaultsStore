@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07C4B6C720E8F6F3009FB62C"
+               BlueprintIdentifier = "9E7DDF201C18F2B500EA43AD"
                BuildableName = "UserDefaultsStore.framework"
-               BlueprintName = "UserDefaultsStore macOS"
+               BlueprintName = "UserDefaultsStore"
                ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,8 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "en"
-      region = "US"
       codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
@@ -35,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07C4B70420E8FB0E009FB62C"
+               BlueprintIdentifier = "9E7DDF2A1C18F2B600EA43AD"
                BuildableName = "UserDefaultsStoreTests.xctest"
-               BlueprintName = "UserDefaultsStoreTests macOS"
+               BlueprintName = "UserDefaultsStoreTests"
                ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -45,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07C4B6C720E8F6F3009FB62C"
+            BlueprintIdentifier = "9E7DDF201C18F2B500EA43AD"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore macOS"
+            BlueprintName = "UserDefaultsStore"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07C4B6C720E8F6F3009FB62C"
+            BlueprintIdentifier = "9E7DDF201C18F2B500EA43AD"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore macOS"
+            BlueprintName = "UserDefaultsStore"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07C4B6C720E8F6F3009FB62C"
+            BlueprintIdentifier = "9E7DDF201C18F2B500EA43AD"
             BuildableName = "UserDefaultsStore.framework"
-            BlueprintName = "UserDefaultsStore macOS"
+            BlueprintName = "UserDefaultsStore"
             ReferencedContainer = "container:UserDefaultsStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
