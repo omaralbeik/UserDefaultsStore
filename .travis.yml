@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode9.4
 
 env:
+  - CODECOV_TOKEN='5ab4d3a7-d045-432d-91ca-5bd1f5fd5688'
   - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X'
   - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X'
   - ACTION=build PLATFORM=watchOS DESTINATION='platform=watchOS Simulator,name=Apple Watch - 42mm'
@@ -14,4 +15,4 @@ before_install:
 
 script:
   - set -o pipefail && xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION | xcpretty -f `xcpretty-json-formatter`
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
