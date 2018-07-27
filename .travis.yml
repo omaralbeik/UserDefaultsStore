@@ -14,5 +14,5 @@ before_install:
   - brew outdated xctool || brew upgrade xctool
 
 script:
-  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION | xcpretty -f `xcpretty-json-formatter`
+  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION
   - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
