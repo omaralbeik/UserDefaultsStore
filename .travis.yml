@@ -12,6 +12,7 @@ before_install:
   - brew outdated xctool || brew upgrade xctool
 
 script:
-  - set -o pipefail && xcodebuild -scheme UserDefaultsStore -enableCodeCoverage YES -destination "$DESTINATION" $ACTION
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - set -o pipefail
+  - swift --version
+  - xcodebuild clean build test -project UserDefaultsStore.xcodeproj -scheme UserDefaultsStore  -destination "platform=iOS Simulator,name=iPhone X" XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-ios.json" xcpretty -f `xcpretty-json-formatter`
+  - bash <(curl -s https://codecov.io/bash) -cF ios -J 'UserDefaultsStore'
