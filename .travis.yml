@@ -11,6 +11,7 @@ before_install:
   - bundle install
   - brew update
   - brew outdated xctool || brew upgrade xctool
+  - pip install codecov
 
 script:
   - set -o pipefail
