@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		07563822210A396C005CDE89 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756381E210A396C005CDE89 /* Identifiable.swift */; };
 		07563831210A3C4A005CDE89 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756381D210A396C005CDE89 /* UserDefaultsStore.swift */; };
-		07563832210A3C4D005CDE89 /* UserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07563825210A3975005CDE89 /* UserDefaultsStoreTests.swift */; };
+		07563832210A3C4D005CDE89 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07563825210A3975005CDE89 /* StoreTests.swift */; };
+		07EED426210C84C200230BA4 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EED425210C84C200230BA4 /* TestUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,11 +27,12 @@
 		0756381D210A396C005CDE89 /* UserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		0756381E210A396C005CDE89 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		0756381F210A396C005CDE89 /* UserDefaultsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsStore.h; sourceTree = "<group>"; };
-		07563825210A3975005CDE89 /* UserDefaultsStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreTests.swift; sourceTree = "<group>"; };
+		07563825210A3975005CDE89 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		07563827210A39D8005CDE89 /* UserDefaultsStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserDefaultsStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0756382B210A3A59005CDE89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0756382D210A3A63005CDE89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07563830210A3B5D005CDE89 /* UserDefaultsStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserDefaultsStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07EED425210C84C200230BA4 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				0756382D210A3A63005CDE89 /* Info.plist */,
-				07563825210A3975005CDE89 /* UserDefaultsStoreTests.swift */,
+				07EED425210C84C200230BA4 /* TestUser.swift */,
+				07563825210A3975005CDE89 /* StoreTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -233,7 +236,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07563832210A3C4D005CDE89 /* UserDefaultsStoreTests.swift in Sources */,
+				07563832210A3C4D005CDE89 /* StoreTests.swift in Sources */,
+				07EED426210C84C200230BA4 /* TestUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
