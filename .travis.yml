@@ -2,16 +2,10 @@ language: objective-c
 osx_image: xcode9.4
 
 env:
-  global:
-    - NAME='UserDefaultsStore'
-    - PROJECT='UserDefaultsStore.xcodeproj'
-
-    - IOS_DESTINATION='platform=iOS Simulator,name=iPhone X'
-    - TVOS_DESTINATION='platform=tvOS Simulator,name=Apple TV 4K (at 1080p)'
-    - WATCHOS_DESTINATION='name=Apple Watch - 42mm'
-    - MACOS_DESTINATION='platform=OS X'
-
-    - CODECOV_TOKEN='5ab4d3a7-d045-432d-91ca-5bd1f5fd5688'
+  - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X'
+  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone X'
+  - ACTION=build PLATFORM=watchOS DESTINATION='platform=watchOS Simulator,name=Apple Watch - 42mm'
+  - ACTION=test  PLATFORM=tvOS    DESTINATION='platform=tvOS Simulator,name=Apple TV 4K (at 1080p)'
 
 before_install:
   - bundle install
@@ -20,14 +14,5 @@ before_install:
 
 script:
   - set -o pipefail
-
-  - xcodebuild clean build test -project "$PROJECT" -scheme "$NAME" -destination "$IOS_DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-ios.json" xcpretty -f `xcpretty-json-formatter`
-  - bash <(curl -s https://codecov.io/bash) -cF ios -J "$NAME" -t "$CODECOV_TOKEN"
-  
-  - xcodebuild clean build test -project "$PROJECT" -scheme "$NAME" -destination "$TVOS_DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-tvos.json" xcpretty -f `xcpretty-json-formatter`
-  - bash <(curl -s https://codecov.io/bash) -cF tvos -J "$NAME" -t "$CODECOV_TOKEN"
-  
-  - xcodebuild clean build test -project "$PROJECT" -scheme "$NAME" -destination "$MACOS_DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-macos.json" xcpretty -f `xcpretty-json-formatter`
-  - bash <(curl -s https://codecov.io/bash) -cF osx -J "$NAME" -t "$CODECOV_TOKEN"
-  
-  - xcodebuild clean build -project "$PROJECT" -scheme "$NAME" -destination "$WATCHOS_DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-watchos.json" xcpretty -f `xcpretty-json-formatter`
+  - xcodebuild -scheme UserDefaultsStore -destination "$DESTINATION" $ACTION | xcpretty -f `xcpretty-json-formatter`
+  - bash <(curl -s https://codecov.io/bash)
