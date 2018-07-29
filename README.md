@@ -19,7 +19,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ## Installation
 
-#### CocoaPods
+#### CocoaPods (Recommended)
 To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org), specify it in your Podfile:
 ```ruby
 pod 'UserDefaultsStore'
@@ -29,6 +29,17 @@ pod 'UserDefaultsStore'
 To integrate UserDefaultsStore using [Carthage](https://github.com/Carthage/Carthage), add the following to your Cartfile:
 ```
 github "omaralbeik/UserDefaultsStore"
+```
+
+#### Swift Package Manager
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but UserDefaultsStore does support its use on supported platforms.
+
+Once you have your Swift package set up, adding UserDefaultsStore as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.0.2")
+]
 ```
 
 #### Manually
