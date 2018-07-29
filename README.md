@@ -19,31 +19,40 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ## Installation
 
-#### CocoaPods (Recommended)
-To integrate UserDefaultsStore into your iOS project using [CocoaPods](https://cocoapods.org), specify it in your Podfile:
-```ruby
-pod 'UserDefaultsStore'
-```
+<details>
+<summary>CocoaPods (Recommended)</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
+<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
+</details>
 
-#### Carthage
-To integrate UserDefaultsStore using [Carthage](https://github.com/Carthage/Carthage), add the following to your Cartfile:
-```
-github "omaralbeik/UserDefaultsStore"
-```
+<details>
+<summary>Carthage</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
 
-#### Swift Package Manager
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but UserDefaultsStore does support its use on supported platforms.
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.0
+</code></pre>
+</details>
 
-Once you have your Swift package set up, adding UserDefaultsStore as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+<details>
+<summary>Swift Package Manager</summary>
+</br>
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but UserDefaultsStore does support its use on supported platforms.</p>
+<p>Once you have your Swift package set up, adding UserDefaultsStore as a dependency is as easy as adding it to the dependencies value of your Package.swift.</p>
 
-```swift
+<pre><code class="swift language-swift">import PackageDescription
 dependencies: [
     .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.0.2")
 ]
-```
+</code></pre>
+</details>
 
-#### Manually
-Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources) folder to your Xcode project.
+<details>
+<summary>Manually</summary>
+</br>
+<p>Add the <a href="https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources">Sources</a> folder to your Xcode project.</p>
+</details>
 
 
 ## Usage
@@ -136,7 +145,7 @@ let usersCount = usersStore.objectsCount
 
 
 ## Thanks
-Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths.
+Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths to write more natural code.
 
 
 ## Credits
