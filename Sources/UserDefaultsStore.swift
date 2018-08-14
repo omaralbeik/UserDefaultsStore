@@ -28,7 +28,7 @@ open class UserDefaultsStore<T: Codable & Identifiable> {
 
 	/// Store's unique identifier.
 	/// **Warning**: Never use the same identifier for two -or more- different stores.
-	open let uniqueIdentifier: String
+	public let uniqueIdentifier: String
 
 	/// JSON encoder. _(default is JSONEncoder())_
 	open var encoder = JSONEncoder()
