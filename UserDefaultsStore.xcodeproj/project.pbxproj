@@ -10,6 +10,8 @@
 		07563822210A396C005CDE89 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756381E210A396C005CDE89 /* Identifiable.swift */; };
 		07563831210A3C4A005CDE89 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756381D210A396C005CDE89 /* UserDefaultsStore.swift */; };
 		07563832210A3C4D005CDE89 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07563825210A3975005CDE89 /* StoreTests.swift */; };
+		078D2A692147BA7500923390 /* SingleUserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */; };
+		078D2A6C2147BD4100923390 /* SingleStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D2A6A2147BD2E00923390 /* SingleStoreTests.swift */; };
 		07EED426210C84C200230BA4 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EED425210C84C200230BA4 /* TestUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		0756382B210A3A59005CDE89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0756382D210A3A63005CDE89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07563830210A3B5D005CDE89 /* UserDefaultsStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserDefaultsStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleUserDefaultsStore.swift; sourceTree = "<group>"; };
+		078D2A6A2147BD2E00923390 /* SingleStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStoreTests.swift; sourceTree = "<group>"; };
 		07EED425210C84C200230BA4 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +62,7 @@
 			children = (
 				0756382B210A3A59005CDE89 /* Info.plist */,
 				0756381D210A396C005CDE89 /* UserDefaultsStore.swift */,
+				078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */,
 				0756381E210A396C005CDE89 /* Identifiable.swift */,
 				0756381F210A396C005CDE89 /* UserDefaultsStore.h */,
 			);
@@ -70,6 +75,7 @@
 				0756382D210A3A63005CDE89 /* Info.plist */,
 				07EED425210C84C200230BA4 /* TestUser.swift */,
 				07563825210A3975005CDE89 /* StoreTests.swift */,
+				078D2A6A2147BD2E00923390 /* SingleStoreTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07563831210A3C4A005CDE89 /* UserDefaultsStore.swift in Sources */,
+				078D2A692147BA7500923390 /* SingleUserDefaultsStore.swift in Sources */,
 				07563822210A396C005CDE89 /* Identifiable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078D2A6C2147BD4100923390 /* SingleStoreTests.swift in Sources */,
 				07563832210A3C4D005CDE89 /* StoreTests.swift in Sources */,
 				07EED426210C84C200230BA4 /* TestUser.swift in Sources */,
 			);
