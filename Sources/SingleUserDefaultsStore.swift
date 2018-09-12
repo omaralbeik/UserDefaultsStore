@@ -66,7 +66,6 @@ open class SingleUserDefaultsStore<T: Codable & Identifiable> {
 
 	/// Delete object from store. _O(1)_
 	public func delete() {
-		store.removeObject(forKey: key)
 		store.removeSuite(named: uniqueIdentifier)
 	}
 
@@ -77,7 +76,7 @@ private extension SingleUserDefaultsStore {
 
 	/// store key for object.
 	var key: String {
-		return "\(uniqueIdentifier)-object"
+		return "\(uniqueIdentifier)-single-object"
 	}
 
 }
