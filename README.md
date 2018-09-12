@@ -141,6 +141,11 @@ let usersCount = usersStore.objectsCount
 
 ```
 
+
+## Looking to store a single item only?
+Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single object only, like token, signed in user, ...
+
+
 ## Requirements
 - iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 9+
