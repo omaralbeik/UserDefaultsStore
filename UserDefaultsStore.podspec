@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "UserDefaultsStore"
-    s.version = "1.1"
+    s.version = "1.2"
     s.summary = "Why not use UserDefaults to store Codable objects 😉"
     s.description = <<-DESC
     You love Swift"s Codable protocol and use it everywhere, here is an easy and very light way to store - reasonable amount 😅 - of Codable objects, in a couple lines of code.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     s.source_files = "Sources/**/*.swift"
     s.swift_version = "4.1"
     s.requires_arc = true
-    
+
     s.ios.deployment_target = "8.0"
     s.osx.deployment_target = "10.10"
     s.tvos.deployment_target = "9.0"
