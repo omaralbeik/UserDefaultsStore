@@ -54,14 +54,15 @@ open class SingleUserDefaultsStore<T: Codable> {
 	/// - Parameter object: object to save.
 	/// - Throws: JSON encoding error.
 	public func save(_ object: T) throws {
-		let data = try encoder.encode(object)
+		let data = try encoder.encode(generateDict(for: object))
 		store.set(data, forKey: key)
 	}
 
 	/// Get object from store. _O(1)_
 	public var object: T? {
 		guard let data = store.data(forKey: key) else { return nil }
-		return try? decoder.decode(T.self, from: data)
+		guard let dict = try? decoder.decode([String: T].self, from: data) else { return nil }
+		return extractObject(from: dict)
 	}
 
 	/// Delete object from store. _O(1)_
@@ -71,8 +72,16 @@ open class SingleUserDefaultsStore<T: Codable> {
 
 }
 
-// MARK: - Keys
+// MARK: - Helpers
 private extension SingleUserDefaultsStore {
+
+	func generateDict(for object: T) -> [String: T] {
+		return ["object": object]
+	}
+
+	func extractObject(from dict: [String: T]) -> T? {
+		return dict["object"]
+	}
 
 	/// store key for object.
 	var key: String {
