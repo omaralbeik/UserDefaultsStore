@@ -24,7 +24,7 @@
 import Foundation
 
 /// SingleUserDefaults Store.
-open class SingleUserDefaultsStore<T: Codable & Identifiable> {
+open class SingleUserDefaultsStore<T: Codable> {
 
 	/// Store's unique identifier.
 	/// **Warning**: Never use the same identifier for two -or more- different stores.

@@ -143,7 +143,7 @@ let usersCount = usersStore.objectsCount
 
 
 ## Looking to store a single item only?
-Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single object only, like token, signed in user, ...
+Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single `Codable` object only.
 
 
 ## Requirements
