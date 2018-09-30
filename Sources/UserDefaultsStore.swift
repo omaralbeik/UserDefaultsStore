@@ -23,23 +23,25 @@
 
 import Foundation
 
-/// UserDefaults Store.
+/// `UserDefaultsStore` offers a convenient way to store a collection of `Codable` objects in `UserDefaults`.
 open class UserDefaultsStore<T: Codable & Identifiable> {
 
 	/// Store's unique identifier.
+	///
 	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	public let uniqueIdentifier: String
 
-	/// JSON encoder. _(default is JSONEncoder())_
+	/// JSON encoder. _default is `JSONEncoder()`_
 	open var encoder = JSONEncoder()
 
-	/// JSON decoder. _(default is JSONDecoder())_
+	/// JSON decoder. _default is `JSONDecoder()`_
 	open var decoder = JSONDecoder()
 
 	/// UserDefaults store.
 	private var store: UserDefaults
 
 	/// Initialize store with given identifier.
+	///
 	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	///
 	/// - Parameter uniqueIdentifier: store's unique identifier.

@@ -23,23 +23,25 @@
 
 import Foundation
 
-/// SingleUserDefaults Store.
+/// `SingleUserDefaultsStore` offers a convenient way to store a single `Codable` object in `UserDefaults`.
 open class SingleUserDefaultsStore<T: Codable> {
 
 	/// Store's unique identifier.
+	///
 	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	public let uniqueIdentifier: String
 
-	/// JSON encoder. _(default is JSONEncoder())_
+	/// JSON encoder. _default is `JSONEncoder()`_
 	open var encoder = JSONEncoder()
 
-	/// JSON decoder. _(default is JSONDecoder())_
+	/// JSON decoder. _default is `JSONDecoder()`_
 	open var decoder = JSONDecoder()
 
 	/// UserDefaults store.
 	private var store: UserDefaults
 
 	/// Initialize store with given identifier.
+	///
 	/// **Warning**: Never use the same identifier for two -or more- different stores.
 	///
 	/// - Parameter uniqueIdentifier: store's unique identifier.
@@ -75,15 +77,23 @@ open class SingleUserDefaultsStore<T: Codable> {
 // MARK: - Helpers
 private extension SingleUserDefaultsStore {
 
+	/// Enclose the object in a dictionary to enable single object storing.
+	///
+	/// - Parameter object: object.
+	/// - Returns: dictionary enclosing object.
 	func generateDict(for object: T) -> [String: T] {
 		return ["object": object]
 	}
 
+	/// Extract object from dictionary.
+	///
+	/// - Parameter dict: dictionary.
+	/// - Returns: object.
 	func extractObject(from dict: [String: T]) -> T? {
 		return dict["object"]
 	}
 
-	/// store key for object.
+	/// Store key for object.
 	var key: String {
 		return "\(uniqueIdentifier)-single-object"
 	}

@@ -23,7 +23,7 @@
 
 import Foundation
 
-/// Conform to `Identifiable` protocol in uniquely identified objects you want to store in a UserDefaultsStore.
+/// Conform to `Identifiable` protocol in uniquely identified objects you want to store in a `UserDefaultsStore`.
 public protocol Identifiable {
 
 	/// ID type.
