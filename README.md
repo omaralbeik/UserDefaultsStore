@@ -15,6 +15,7 @@
   <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
 
+> A Turkish version of this document can be found [here](https://github.com/omaralbeik/UserDefaultsStore/blob/master/README_TR.md).
 
 # tl;dr
 You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrieve -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
@@ -162,8 +163,9 @@ Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/
 
 ## Thanks
 
-Special thanks to [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths to write more natural code.
-
+Special thanks to:
+- [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths to write more natural code.
+- [Batuhan Saka](https://github.com/strawb3rryx7) for translating this document into [Turkish](https://github.com/omaralbeik/UserDefaultsStore/blob/master/README_TR.md).
 
 ## Credits
 
