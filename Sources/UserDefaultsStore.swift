@@ -186,7 +186,7 @@ private extension UserDefaultsStore {
 	/// - Parameter object: object.
 	/// - Returns: UserDefaults key for given object.
 	func key(for object: T) -> String {
-		return "\(uniqueIdentifier)-\(object[keyPath: T.idKey].hashValue)"
+		return "\(uniqueIdentifier)-\(object[keyPath: T.idKey])"
 	}
 
 	/// store key for object by its id.
@@ -194,7 +194,7 @@ private extension UserDefaultsStore {
 	/// - Parameter id: object id.
 	/// - Returns: UserDefaults key for given id.
 	func key(for id: T.ID) -> String {
-		return "\(uniqueIdentifier)-\(id.hashValue)"
+		return "\(uniqueIdentifier)-\(id)"
 	}
 
 	/// Check if a UserDefaults key is an object key.

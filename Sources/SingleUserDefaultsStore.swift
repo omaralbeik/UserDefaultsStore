@@ -69,6 +69,7 @@ open class SingleUserDefaultsStore<T: Codable> {
 
 	/// Delete object from store. _O(1)_
 	public func delete() {
+		store.set(nil, forKey: key)
 		store.removeSuite(named: uniqueIdentifier)
 	}
 
