@@ -11,14 +11,14 @@
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
   <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="Swift Package Manager compatible" /></a>
   <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg" alt="Swift" /></a>
-  <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-9.4-blue.svg" alt="Xcode"></a>
+  <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-10-blue.svg" alt="Xcode"></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
 
 
 # tl;dr
 
-Swift'in `Codable` protokolüne bayılıyorsun ve her yerde kullanıyorsun, kim kullanmadı ki! İşte `Codable` objelerini saklamak ve istediğiniz zaman geri almak için kolay ve hafif bir yol! 
+Swift'in `Codable` protokolüne bayılıyorsun ve her yerde kullanıyorsun, kim kullanmadı ki! İşte `Codable` objelerini saklamak ve istediğiniz zaman geri almak için kolay ve hafif bir yol!
 
 
 ## Kurulum
@@ -150,14 +150,14 @@ let usersCount = usersStore.objectsCount
 ```
 
 
-## 
+##
 [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift)'ı kullanarak tek bir nesneyi saklayabilirsiniz. Token ve giriş yapmış kullanıcı verisi gibi, ...
 
 
 ## Gereksinimler
 - iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 9+
-- Swift 4+
+- Xcode 10.0+
+- Swift 4.2+
 
 
 ## Teşekkürler
@@ -170,5 +170,3 @@ Swift Keypath'leri kullanarak daha doğal kod nasıl yazılır sorusuna cevap ve
 
 ## Lisans
 UserDefaultsStore MIT lisansı altında yayınlandı. Daha fazlası için [LICENSE](https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE) dosyasına bakabilirsiniz.
-
-
