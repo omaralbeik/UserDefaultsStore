@@ -153,6 +153,8 @@ let usersCount = usersStore.objectsCount
 
 Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
 
+## Note about using `class` instead of `struct`
+At the moment, only `final` classes are supported, please take this into consideration before using the library.
 
 ## Requirements
 
