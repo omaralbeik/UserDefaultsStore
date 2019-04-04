@@ -1,5 +1,6 @@
-language: objective-c
-osx_image: xcode10
+os: osx
+language: swift
+osx_image: xcode10.2
 
 env:
   - ACTION=test  PLATFORM=Mac     DESTINATION='platform=OS X'
