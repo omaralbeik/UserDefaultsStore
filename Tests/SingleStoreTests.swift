@@ -31,6 +31,11 @@ final class SingleStoreTests: XCTestCase {
 		XCTAssertNotNil(store)
 	}
 
+    func testCreateInvalidStore() {
+        let invalidStore = SingleUserDefaultsStore<Bool>(uniqueIdentifier: UserDefaults.globalDomain)
+        XCTAssertNil(invalidStore)
+    }
+
 	func testSaveObject() {
 		let store = createFreshUsersStore()!
 

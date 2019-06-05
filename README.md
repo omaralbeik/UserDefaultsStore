@@ -10,7 +10,7 @@
   <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
   <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="Swift Package Manager compatible" /></a>
-  <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg" alt="Swift" /></a>
+  <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5-orange.svg" alt="Swift" /></a>
   <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-10-blue.svg" alt="Xcode"></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
@@ -42,14 +42,27 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 <details>
 <summary>Swift Package Manager</summary>
 </br>
-<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but UserDefaultsStore does support its use on supported platforms.</p>
-<p>Once you have your Swift package set up, adding UserDefaultsStore as a dependency is as easy as adding it to the dependencies value of your Package.swift.</p>
+<p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code>UserDefaultsStore</code> by adding the proper description to your <code>Package.swift</code> file:</p>
 
 <pre><code class="swift language-swift">import PackageDescription
-dependencies: [
-    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.0.2")
-]
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.1")
+    ]
+)
 </code></pre>
+
+<p>Next, add <code>UserDefaultsStore</code> to your targets dependencies like so:</p>
+<pre><code class="swift language-swift">.target(
+    name: "YOUR_TARGET_NAME",
+    dependencies: [
+        "UserDefaultsStore",
+    ]
+),</code></pre>
+<p>Then run <code>swift package update</code>.</p>
 </details>
 
 <details>
