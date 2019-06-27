@@ -50,7 +50,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.1")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.2")
     ]
 )
 </code></pre>
