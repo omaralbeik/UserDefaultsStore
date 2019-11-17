@@ -15,8 +15,6 @@
   <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
 
-> A Turkish version of this document can be found [here](https://github.com/omaralbeik/UserDefaultsStore/blob/master/README_TR.md).
-
 # tl;dr
 You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrieve -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
 
@@ -35,7 +33,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 </br>
 <p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
 
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.0
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.4.3
 </code></pre>
 </details>
 
@@ -50,7 +48,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.2")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.3")
     ]
 )
 </code></pre>

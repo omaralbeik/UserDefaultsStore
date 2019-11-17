@@ -21,15 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-
 /// Conform to `Identifiable` protocol in uniquely identified objects you want to store in a `UserDefaultsStore`.
 public protocol Identifiable {
 
-	/// ID type.
-	associatedtype ID
+    /// ID type.
+    associatedtype ID
 
-	/// Id Key.
-	static var idKey: WritableKeyPath<Self, ID> { get }
+    /// Id Key.
+    static var idKey: WritableKeyPath<Self, ID> { get }
 
 }

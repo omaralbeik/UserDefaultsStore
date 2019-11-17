@@ -24,23 +24,25 @@
 @testable import UserDefaultsStore
 
 struct TestUser: Codable, Equatable, CustomStringConvertible, Identifiable {
-	static let idKey = \TestUser.userId
+    static let idKey = \TestUser.userId
 
-	var userId: Int
-	var firstName: String
-	var lastName: String
-	var age: Double
+    var userId: Int
+    var firstName: String
+    var lastName: String
+    var age: Double
 
-	static func == (lhs: TestUser, rhs: TestUser) -> Bool {
-		return lhs.userId == rhs.userId
-	}
+    static func == (lhs: TestUser, rhs: TestUser) -> Bool {
+        return lhs.userId == rhs.userId
+    }
 
-	var description: String {
-		return firstName
-	}
+    var description: String {
+        return firstName
+    }
 
-	static let john = TestUser(userId: 1, firstName: "John", lastName: "Appleseed", age: 21.5)
-	static let johnson = TestUser(userId: 2, firstName: "Johnson", lastName: "Smith", age: 26.3)
-	static let james = TestUser(userId: 3, firstName: "James", lastName: "Robert", age: 14)
+    static let john = TestUser(userId: 1, firstName: "John", lastName: "Appleseed", age: 21.5)
+    static let johnson = TestUser(userId: 2, firstName: "Johnson", lastName: "Smith", age: 26.3)
+    static let james = TestUser(userId: 3, firstName: "James", lastName: "Robert", age: 14)
+
+    static let invalid = TestUser(userId: 4, firstName: "", lastName: "", age: .nan)
 
 }
