@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UserDefaultsStore  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="UserDefaultsStore  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          UserDefaultsStore Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">UserDefaultsStore Reference</a>
+      <img class="carat" src="img/carat.png" />
+      UserDefaultsStore  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SingleUserDefaultsStore.html">SingleUserDefaultsStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/UserDefaultsStore.html">UserDefaultsStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Identifiable.html">Identifiable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <p align="center">
+  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/master/Assets/readme-logo.svg" title="UserDefaultsStore">
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.org/omaralbeik/UserDefaultsStore"><img src="https://travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg" alt="Test Coverage" /></a>
+  <a href="https://codebeat.co/projects/github-com-omaralbeik-userdefaultsstore-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e12405dc-1370-49bb-bd35-5f248a347f1a" /></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
+  <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
+  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
+  <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="Swift Package Manager compatible" /></a>
+  <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5-orange.svg" alt="Swift" /></a>
+  <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-10-blue.svg" alt="Xcode"></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
+</p>
+<h1 id='tl-dr' class='heading'>tl;dr</h1>
+
+<p>You love Swift&rsquo;s <code>Codable</code> protocol and use it everywhere, who doesn&rsquo;t! Here is an easy and very light way to store and retrieve -<strong>reasonable amount 😅</strong>- of <code>Codable</code> objects, in a couple lines of code!</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<details>
+<summary>CocoaPods (Recommended)</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
+<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
+</details>
+
+<details>
+<summary>Carthage</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.4.3
+</code></pre>
+</details>
+
+<details>
+<summary>Swift Package Manager</summary>
+</br>
+<p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code><a href="Classes/UserDefaultsStore.html">UserDefaultsStore</a></code> by adding the proper description to your <code>Package.swift</code> file:</p>
+
+<pre><code class="swift language-swift">import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.3")
+    ]
+)
+</code></pre>
+
+<p>Next, add <code><a href="Classes/UserDefaultsStore.html">UserDefaultsStore</a></code> to your targets dependencies like so:</p>
+<pre><code class="swift language-swift">.target(
+    name: "YOUR_TARGET_NAME",
+    dependencies: [
+        "UserDefaultsStore",
+    ]
+),</code></pre>
+<p>Then run <code>swift package update</code>.</p>
+</details>
+
+<details>
+<summary>Manually</summary>
+</br>
+<p>Add the <a href="https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources">Sources</a> folder to your Xcode project.</p>
+</details>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>Let&rsquo;s say you have 2 structs; <code>User</code> and <code>Laptop</code> defined as bellow:</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">firstName</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">lastName</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">laptop</span><span class="p">:</span> <span class="kt">Laptop</span><span class="p">?</span>
+<span class="p">}</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Laptop</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">model</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Here is how you store them in <strong>UserDefaultsStore</strong>:</p>
+<h3 id='1-conform-to-the-code-identifiable-code-protocol-and-set-the-code-idkey-code-property' class='heading'>1. Conform to the <code><a href="Protocols/Identifiable.html">Identifiable</a></code> protocol and set the <code>idKey</code> property</h3>
+
+<p>The <code><a href="Protocols/Identifiable.html">Identifiable</a></code> protocol lets UserDefaultsStore knows what is the unique id for each object.</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">idKey</span> <span class="o">=</span> <span class="err">\</span><span class="kt">User</span><span class="o">.</span><span class="n">id</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Laptop</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">idKey</span> <span class="o">=</span> <span class="err">\</span><span class="kt">Laptop</span><span class="o">.</span><span class="n">model</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>Notice how <code>User</code> uses <code>Int</code> for its id, while <code>Laptop</code> uses <code>String</code>, in fact the id can be any <code>Hashable</code> type. UserDefaults uses Swift keypaths to refer to properties without actually invoking them. Swift rocks 🤘</p>
+</blockquote>
+<h3 id='2-create-userdefaults-stores' class='heading'>2. Create UserDefaults Stores</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">usersStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"users"</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">laptopsStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">Laptop</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"laptops"</span><span class="p">)</span><span class="o">!</span>
+</code></pre>
+<h3 id='3-voilà-you-39-re-all-set' class='heading'>3. Voilà, you&rsquo;re all set!</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">macbook</span> <span class="o">=</span> <span class="kt">Laptop</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="s">"A1278"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"MacBook Pro"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">john</span> <span class="o">=</span> <span class="kt">User</span><span class="p">(</span><span class="nv">userId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">firstName</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Appleseed"</span><span class="p">,</span> <span class="nv">laptop</span><span class="p">:</span> <span class="n">macbook</span><span class="p">)</span>
+
+<span class="c1">// Save an object to a store</span>
+<span class="k">try!</span> <span class="n">usersStore</span><span class="o">.</span><span class="nf">save</span><span class="p">(</span><span class="n">john</span><span class="p">)</span>
+
+<span class="c1">// Save an array of objects to a store</span>
+<span class="k">try!</span> <span class="n">usersStore</span><span class="o">.</span><span class="nf">save</span><span class="p">([</span><span class="n">jane</span><span class="p">,</span> <span class="n">steve</span><span class="p">,</span> <span class="n">jessica</span><span class="p">])</span>
+
+<span class="c1">// Get an object from store</span>
+<span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="nf">object</span><span class="p">(</span><span class="nv">withId</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">laptop</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="nf">object</span><span class="p">(</span><span class="nv">withId</span><span class="p">:</span> <span class="s">"A1278"</span><span class="p">)</span>
+
+<span class="c1">// Get all objects in a store</span>
+<span class="k">let</span> <span class="nv">laptops</span> <span class="o">=</span> <span class="n">laptopsStore</span><span class="o">.</span><span class="nf">allObjects</span><span class="p">()</span>
+
+<span class="c1">// Check if store has an object</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">usersStore</span><span class="o">.</span><span class="nf">hasObject</span><span class="p">(</span><span class="nv">withId</span><span class="p">:</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">// false</span>
+
+<span class="c1">// Iterate over all objects in a store</span>
+<span class="n">laptopsStore</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">laptop</span> <span class="k">in</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">laptop</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Delete an object from a store</span>
+<span class="n">usersStore</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">withId</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">// Delete all objects in a store</span>
+<span class="n">laptops</span><span class="o">.</span><span class="nf">deleteAll</span><span class="p">()</span>
+
+<span class="c1">// Know how many objects are stored in a store</span>
+<span class="k">let</span> <span class="nv">usersCount</span> <span class="o">=</span> <span class="n">usersStore</span><span class="o">.</span><span class="n">objectsCount</span>
+
+</code></pre>
+<h2 id='looking-to-store-a-single-item-only' class='heading'>Looking to store a single item only?</h2>
+
+<p>Use <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift"><code><a href="Classes/SingleUserDefaultsStore.html">SingleUserDefaultsStore</a></code></a>, it enables storing and retrieving a single value of <code>Int</code>, <code>Double</code>, <code>String</code>, or any <code>Codable</code> type.</p>
+<h2 id='note-about-using-code-class-code-instead-of-code-struct-code' class='heading'>Note about using <code>class</code> instead of <code>struct</code></h2>
+
+<p>At the moment, only <code>final</code> classes are supported, please take this into consideration before using the library.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+</li>
+<li>Xcode 10.0+</li>
+<li>Swift 4.2+</li>
+</ul>
+<h2 id='thanks' class='heading'>Thanks</h2>
+
+<p>Special thanks to:</p>
+
+<ul>
+<li><a href="https://twitter.com/twostraws">Paul Hudson</a> for his <a href="https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code">article</a> on how to use Swift keypaths to write more natural code.</li>
+<li><a href="https://github.com/strawb3rryx7">Batuhan Saka</a> for translating this document into <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/README_TR.md">Turkish</a>.</li>
+</ul>
+<h2 id='credits' class='heading'>Credits</h2>
+
+<p>Icon made by <a href="https://www.flaticon.com/authors/freepik">freepik</a> from <a href="https://www.flaticon.com">flaticon.com</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>UserDefaultsStore is released under the MIT license. See <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE">LICENSE</a> for more information.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://github.com/omaralbeik/UserDefaultsStore" target="_blank" rel="external">Omar Albeik</a>. All rights reserved. (Last updated: 2019-11-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

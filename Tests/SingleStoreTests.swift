@@ -26,47 +26,45 @@ import XCTest
 
 final class SingleStoreTests: XCTestCase {
 
-	func testCreateStore() {
-		let store = createFreshUsersStore()
-		XCTAssertNotNil(store)
-	}
+    func testCreateStore() {
+        let store = createFreshUsersStore()
+        XCTAssertNotNil(store)
+    }
 
     func testCreateInvalidStore() {
         let invalidStore = SingleUserDefaultsStore<Bool>(uniqueIdentifier: UserDefaults.globalDomain)
         XCTAssertNil(invalidStore)
     }
 
-	func testSaveObject() {
-		let store = createFreshUsersStore()!
+    func testSaveObject() {
+        let store = createFreshUsersStore()!
 
-		XCTAssertNoThrow(try store.save(TestUser.john))
-		XCTAssertNotNil(store.object)
-		XCTAssertEqual(store.object!, TestUser.john)
-	}
+        XCTAssertNoThrow(try store.save(TestUser.john))
+        XCTAssertNotNil(store.object)
+        XCTAssertEqual(store.object!, TestUser.john)
+    }
 
-	func testSaveInvalidObject() {
-		let store = createFreshUsersStore()!
+    func testSaveInvalidObject() {
+        let store = createFreshUsersStore()!
+        XCTAssertThrowsError(try store.save(TestUser.invalid))
+    }
 
-		let user = TestUser(userId: 5, firstName: "firstName", lastName: "lastName", age: .nan)
-		XCTAssertThrowsError(try store.save(user))
-	}
+    func testObject() {
+        let store = createFreshUsersStore()!
 
-	func testObject() {
-		let store = createFreshUsersStore()!
-
-		XCTAssertNoThrow(try store.save(TestUser.johnson))
-		XCTAssertNotNil(store.object)
-	}
+        XCTAssertNoThrow(try store.save(TestUser.johnson))
+        XCTAssertNotNil(store.object)
+    }
 
 }
 
 // MARK: - Helpers
 private extension SingleStoreTests {
 
-	func createFreshUsersStore() -> SingleUserDefaultsStore<TestUser>? {
-		let store = SingleUserDefaultsStore<TestUser>(uniqueIdentifier: "single-user")
-		store?.delete()
-		return store
-	}
+    func createFreshUsersStore() -> SingleUserDefaultsStore<TestUser>? {
+        let store = SingleUserDefaultsStore<TestUser>(uniqueIdentifier: "single-user")
+        store?.delete()
+        return store
+    }
 
 }
