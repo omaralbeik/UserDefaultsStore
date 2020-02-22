@@ -34,7 +34,7 @@ jobs:
           DEVELOPER_DIR: ${{ matrix.xcode }}
           SCHEME: UserDefaultsStore
           DESTINATION: platform=iOS Simulator,name=iPhone 11
-    - name: Test MacOS
+    - name: Test macOS
       run: |
         xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-macos.json" xcpretty -f `xcpretty-json-formatter`
         bash <(curl -s https://codecov.io/bash) -cF macos -J 'UserDefaultsStore'
@@ -42,7 +42,7 @@ jobs:
           DEVELOPER_DIR: ${{ matrix.xcode }}
           SCHEME: UserDefaultsStore
           DESTINATION: platform=OS X
-    - name: Test TVOS
+    - name: Test tvOS
       run: |
         xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-tvos.json" xcpretty -f `xcpretty-json-formatter`
         bash <(curl -s https://codecov.io/bash) -cF tvos -J 'UserDefaultsStore'
@@ -50,7 +50,7 @@ jobs:
           DEVELOPER_DIR: ${{ matrix.xcode }}
           SCHEME: UserDefaultsStore
           DESTINATION: platform=tvOS Simulator,name=Apple TV 4K (at 1080p)
-    - name: Build WatchOS
+    - name: Build watchOS
       run: xcodebuild clean build -project $PROJECT -scheme $SCHEME -destination "$DESTINATION"
       env:
           DEVELOPER_DIR: ${{ matrix.xcode }}
@@ -79,11 +79,3 @@ jobs:
       run: bundle install
     - name: CocoaPods ${{ matrix.platform }}
       run: bundle exec pod lib lint --skip-tests --allow-warnings --verbose --platforms=${{ matrix.platform }} 
-      
-  Linux:
-    runs-on: [ubuntu-16.04] 
-    container: swift:5.0.3
-    steps:
-      - uses: actions/checkout@v1
-      - name: Linux
-        run: swift test --parallel
