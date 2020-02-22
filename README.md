@@ -5,7 +5,6 @@
 <p align="center">
   <a href="https://travis-ci.org/omaralbeik/UserDefaultsStore"><img src="https://travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master" alt="Build Status"></a>
   <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg" alt="Test Coverage" /></a>
-  <a href="https://codebeat.co/projects/github-com-omaralbeik-userdefaultsstore-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e12405dc-1370-49bb-bd35-5f248a347f1a" /></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
   <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
