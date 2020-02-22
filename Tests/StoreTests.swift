@@ -31,6 +31,30 @@ final class StoreTests: XCTestCase {
         XCTAssertNotNil(store)
     }
 
+    func testCreateStoreWithCustomEncoderAndDecoder() {
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+
+        let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
+        XCTAssertNotNil(store)
+        XCTAssert(store?.encoder === encoder)
+        XCTAssert(store?.decoder === decoder)
+    }
+
+    func testCreateStoreWithCustomDecoder() {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .useDefaultKeys
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
+        XCTAssertNotNil(store)
+
+        XCTAssertNoThrow(try store?.save(TestUser.john))
+        XCTAssertEqual(store?.object(withId: TestUser.john.userId), TestUser.john)
+    }
+
     func testCreateInvalidStore() {
         let invalidStore = UserDefaultsStore<TestUser>(uniqueIdentifier: UserDefaults.globalDomain)
         XCTAssertNil(invalidStore)
@@ -181,8 +205,15 @@ final class StoreTests: XCTestCase {
 // MARK: - Helpers
 private extension StoreTests {
 
-    func createFreshUsersStore() -> UserDefaultsStore<TestUser>? {
-        let store = UserDefaultsStore<TestUser>(uniqueIdentifier: "users")
+    func createFreshUsersStore(
+        encoder: JSONEncoder = .init(),
+        decoder: JSONDecoder = .init()
+    ) -> UserDefaultsStore<TestUser>? {
+        let store = UserDefaultsStore<TestUser>(
+            uniqueIdentifier: "users",
+            encoder: encoder,
+            decoder: decoder
+        )
         store?.deleteAll()
         return store
     }

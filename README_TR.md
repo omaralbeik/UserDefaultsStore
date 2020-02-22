@@ -38,7 +38,7 @@ Swift'in `Codable` protokolüne bayılıyorsun ve her yerde kullanıyorsun, kim 
 </br>
 <p>UserDefaultsStore'u <a href="https://github.com/Carthage/Carthage">Carthage</a>'u kullanarak Xcode projenize entegre etmek için, bunu <code>Cartfile</code>'da belirtin:
 
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.4.3
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.5.0
 </code></pre>
 </details>
 
@@ -52,7 +52,7 @@ Swift'in `Codable` protokolüne bayılıyorsun ve her yerde kullanıyorsun, kim 
 
 <pre><code class="swift language-swift">import PackageDescription
 dependencies: [
-    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.3")
+    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.5.0")
 ]
 </code></pre>
 </details>

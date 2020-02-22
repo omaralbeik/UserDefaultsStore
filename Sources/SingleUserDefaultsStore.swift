@@ -31,11 +31,11 @@ open class SingleUserDefaultsStore<T: Codable> {
     /// **Warning**: Never use the same identifier for two -or more- different stores.
     public let uniqueIdentifier: String
 
-    /// JSON encoder. _default is `JSONEncoder()`_
-    open var encoder = JSONEncoder()
+    /// JSON encoder to be used for encoding object to be stored.
+    open var encoder: JSONEncoder
 
-    /// JSON decoder. _default is `JSONDecoder()`_
-    open var decoder = JSONDecoder()
+    /// JSON decoder to be used to decode the stored object.
+    open var decoder: JSONDecoder
 
     /// UserDefaults store.
     private var store: UserDefaults
@@ -45,9 +45,17 @@ open class SingleUserDefaultsStore<T: Codable> {
     /// **Warning**: Never use the same identifier for two -or more- different stores.
     ///
     /// - Parameter uniqueIdentifier: store's unique identifier.
-    required public init?(uniqueIdentifier: String) {
+    /// - Parameter encoder: JSON encoder to be used for encoding object to be stored. _default is `JSONEncoder()`_
+    /// - Parameter decoder: JSON decoder to be used to decode the stored object. _default is `JSONDecoder()`_
+    required public init?(
+        uniqueIdentifier: String,
+        encoder: JSONEncoder = .init(),
+        decoder: JSONDecoder = .init()
+    ) {
         guard let store = UserDefaults(suiteName: uniqueIdentifier) else { return nil }
         self.uniqueIdentifier = uniqueIdentifier
+        self.encoder = encoder
+        self.decoder = decoder
         self.store = store
     }
 

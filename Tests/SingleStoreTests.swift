@@ -31,6 +31,16 @@ final class SingleStoreTests: XCTestCase {
         XCTAssertNotNil(store)
     }
 
+    func testCreateStoreWithCustomEncoderAndDecoder() {
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+
+        let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
+        XCTAssertNotNil(store)
+        XCTAssert(store?.encoder === encoder)
+        XCTAssert(store?.decoder === decoder)
+    }
+
     func testCreateInvalidStore() {
         let invalidStore = SingleUserDefaultsStore<Bool>(uniqueIdentifier: UserDefaults.globalDomain)
         XCTAssertNil(invalidStore)
@@ -61,8 +71,15 @@ final class SingleStoreTests: XCTestCase {
 // MARK: - Helpers
 private extension SingleStoreTests {
 
-    func createFreshUsersStore() -> SingleUserDefaultsStore<TestUser>? {
-        let store = SingleUserDefaultsStore<TestUser>(uniqueIdentifier: "single-user")
+    func createFreshUsersStore(
+        encoder: JSONEncoder = .init(),
+        decoder: JSONDecoder = .init()
+    ) -> SingleUserDefaultsStore<TestUser>? {
+        let store = SingleUserDefaultsStore<TestUser>(
+            uniqueIdentifier: "single-user",
+            encoder: encoder,
+            decoder: decoder
+        )
         store?.delete()
         return store
     }

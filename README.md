@@ -33,7 +33,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 </br>
 <p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
 
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.4.3
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.5.0
 </code></pre>
 </details>
 
@@ -48,7 +48,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.4.3")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.5.0")
     ]
 )
 </code></pre>
