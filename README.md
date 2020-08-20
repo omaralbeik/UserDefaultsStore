@@ -165,6 +165,12 @@ laptops.deleteAll()
 // Know how many objects are stored in a store
 let usersCount = usersStore.objectsCount
 
+// Create a snapshot
+let snapshot = usersStore.generateSnapshot()
+
+// Restore a pre-generated snapshot
+try? usersStore.restoreSnapshot(snapshot)
+
 ```
 
 
@@ -174,9 +180,8 @@ Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/
 
 ## Requirements
 
-- iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 10.0+
-- Swift 4.2+
+- iOS 13.0+ / macOS 10.15+ / tvOS 13.0+ / watchOS 6.0+
+- Swift 5.0+
 
 
 ## Thanks
