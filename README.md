@@ -17,27 +17,22 @@
 # tl;dr
 You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrieve -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
 
+---
+
+## Introducing v2.0
+
+- Removed the `Identifiable` protocol in favor of Swift's `Identifiable`.
+- Increased deployment targets to iOS `13.0`, `tvOS 13.0`, `macOS 10.15`, and `watchOS 6.0`.
+- Objects defined as non-final classes can now be used as well.
+- Added new `generateSnapshot()` and `restoreSnapshot(_:)` methods to generate and restore a `Snapshot` object that can be saved (e.g. to iCloud) and restored later.
+- Fixed a bug where `objectsCount` might run out of sync with the actual count of objects in store.
+
+---
 
 ## Installation
 
 <details>
-<summary>CocoaPods (Recommended)</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
-<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
-</details>
-
-<details>
-<summary>Carthage</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
-
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.5.0
-</code></pre>
-</details>
-
-<details>
-<summary>Swift Package Manager</summary>
+<summary>Swift Package Manager (Recommended)</summary>
 </br>
 <p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code>UserDefaultsStore</code> by adding the proper description to your <code>Package.swift</code> file:</p>
 
@@ -47,7 +42,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.5.0")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.0.0")
     ]
 )
 </code></pre>
@@ -60,6 +55,23 @@ let package = Package(
     ]
 ),</code></pre>
 <p>Then run <code>swift package update</code>.</p>
+</details>
+
+
+<details>
+<summary>CocoaPods</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
+<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
+</details>
+
+<details>
+<summary>Carthage</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 2.0.0
+</code></pre>
 </details>
 
 <details>
@@ -92,39 +104,36 @@ struct Laptop: Codable {
 Here is how you store them in **UserDefaultsStore**:
 
 
-### 1. Conform to the `Identifiable` protocol and set the `idKey` property
+### 1. Conform to the `Identifiable` protocol and set the `id` property
 
 The `Identifiable` protocol lets UserDefaultsStore knows what is the unique id for each object.
 
 ```swift
 struct User: Codable, Identifiable {
-    static let idKey = \User.id
     ...
 }
 ```
 
 ```swift
 struct Laptop: Codable, Identifiable {
-    static let idKey = \Laptop.model
+    var id: String { model }
     ...
 }
 ```
-
-> Notice how `User` uses `Int` for its id, while `Laptop` uses `String`, in fact the id can be any `Hashable` type. UserDefaults uses Swift keypaths to refer to properties without actually invoking them. Swift rocks 🤘
 
 
 ### 2. Create UserDefaults Stores
 
 ```swift
-let usersStore = UserDefaultsStore<User>(uniqueIdentifier: "users")!
-let laptopsStore = UserDefaultsStore<Laptop>(uniqueIdentifier: "laptops")!
+let usersStore = UserDefaultsStore<User>(uniqueIdentifier: "users")
+let laptopsStore = UserDefaultsStore<Laptop>(uniqueIdentifier: "laptops")
 ```
 
 ### 3. Voilà, you're all set!
 
 ```swift
 let macbook = Laptop(model: "A1278", name: "MacBook Pro")
-let john = User(userId: 1, firstName: "John", lastName: "Appleseed", laptop: macbook)
+let john = User(id: 1, firstName: "John", lastName: "Appleseed", laptop: macbook)
 
 // Save an object to a store
 try! usersStore.save(john)
@@ -162,9 +171,6 @@ let usersCount = usersStore.objectsCount
 ## Looking to store a single item only?
 
 Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
-
-## Note about using `class` instead of `struct`
-At the moment, only `final` classes are supported, please take this into consideration before using the library.
 
 ## Requirements
 

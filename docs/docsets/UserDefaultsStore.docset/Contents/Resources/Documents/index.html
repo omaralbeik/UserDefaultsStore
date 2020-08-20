@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          UserDefaultsStore Docs
+          UserDefaultsStore 2.0.0 Docs
         </a>
          (100% documented)
       </p>
@@ -50,15 +50,13 @@
                 <a class="nav-group-task-link" href="Classes/SingleUserDefaultsStore.html">SingleUserDefaultsStore</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SingleUserDefaultsStore/Snapshot.html">– Snapshot</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/UserDefaultsStore.html">UserDefaultsStore</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/Identifiable.html">Identifiable</a>
+                <a class="nav-group-task-link" href="Classes/UserDefaultsStore/Snapshot.html">– Snapshot</a>
               </li>
             </ul>
           </li>
@@ -74,9 +72,8 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/omaralbeik/UserDefaultsStore"><img src="https://travis-ci.org/omaralbeik/UserDefaultsStore.svg?branch=master" alt="Build Status"></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore/actions"><img src="https://github.com/omaralbeik/UserDefaultsStore/workflows/UserDefaultsStore/badge.svg?branch=master" alt="Build Status"></a>
   <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg" alt="Test Coverage" /></a>
-  <a href="https://codebeat.co/projects/github-com-omaralbeik-userdefaultsstore-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e12405dc-1370-49bb-bd35-5f248a347f1a" /></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
   <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
@@ -88,26 +85,23 @@
 <h1 id='tl-dr' class='heading'>tl;dr</h1>
 
 <p>You love Swift&rsquo;s <code>Codable</code> protocol and use it everywhere, who doesn&rsquo;t! Here is an easy and very light way to store and retrieve -<strong>reasonable amount 😅</strong>- of <code>Codable</code> objects, in a couple lines of code!</p>
+
+<hr>
+<h2 id='introducing-v2-0' class='heading'>Introducing v2.0</h2>
+
+<ul>
+<li>Removed the <code>Identifiable</code> protocol in favor of Swift&rsquo;s <code>Identifiable</code>.</li>
+<li>Increased deployment targets to iOS <code>13.0</code>, <code>tvOS 13.0</code>, <code>macOS 10.15</code>, and <code>watchOS 6.0</code>.</li>
+<li>Objects defined as non-final classes can now be used as well.</li>
+<li>Added new <code>generateSnapshot()</code> and <code>restoreSnapshot(_:)</code> methods to generate and restore a <code>Snapshot</code> object that can be saved (e.g. to iCloud) and restored later.</li>
+<li>Fixed a bug where <code>objectsCount</code> might run out of sync with the actual count of objects in store.</li>
+</ul>
+
+<hr>
 <h2 id='installation' class='heading'>Installation</h2>
 
 <details>
-<summary>CocoaPods (Recommended)</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
-<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
-</details>
-
-<details>
-<summary>Carthage</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
-
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 1.5.0
-</code></pre>
-</details>
-
-<details>
-<summary>Swift Package Manager</summary>
+<summary>Swift Package Manager (Recommended)</summary>
 </br>
 <p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code><a href="Classes/UserDefaultsStore.html">UserDefaultsStore</a></code> by adding the proper description to your <code>Package.swift</code> file:</p>
 
@@ -117,7 +111,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "1.5.0")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.0.0")
     ]
 )
 </code></pre>
@@ -130,6 +124,22 @@ let package = Package(
     ]
 ),</code></pre>
 <p>Then run <code>swift package update</code>.</p>
+</details>
+
+<details>
+<summary>CocoaPods</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
+<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
+</details>
+
+<details>
+<summary>Carthage</summary>
+</br>
+<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 2.0.0
+</code></pre>
 </details>
 
 <details>
@@ -154,30 +164,25 @@ let package = Package(
 </code></pre>
 
 <p>Here is how you store them in <strong>UserDefaultsStore</strong>:</p>
-<h3 id='1-conform-to-the-code-identifiable-code-protocol-and-set-the-code-idkey-code-property' class='heading'>1. Conform to the <code><a href="Protocols/Identifiable.html">Identifiable</a></code> protocol and set the <code>idKey</code> property</h3>
+<h3 id='1-conform-to-the-code-identifiable-code-protocol-and-set-the-code-id-code-property' class='heading'>1. Conform to the <code>Identifiable</code> protocol and set the <code>id</code> property</h3>
 
-<p>The <code><a href="Protocols/Identifiable.html">Identifiable</a></code> protocol lets UserDefaultsStore knows what is the unique id for each object.</p>
+<p>The <code>Identifiable</code> protocol lets UserDefaultsStore knows what is the unique id for each object.</p>
 <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">let</span> <span class="nv">idKey</span> <span class="o">=</span> <span class="err">\</span><span class="kt">User</span><span class="o">.</span><span class="n">id</span>
     <span class="o">...</span>
 <span class="p">}</span>
 </code></pre>
 <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Laptop</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">let</span> <span class="nv">idKey</span> <span class="o">=</span> <span class="err">\</span><span class="kt">Laptop</span><span class="o">.</span><span class="n">model</span>
+    <span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="n">model</span> <span class="p">}</span>
     <span class="o">...</span>
 <span class="p">}</span>
 </code></pre>
-
-<blockquote>
-<p>Notice how <code>User</code> uses <code>Int</code> for its id, while <code>Laptop</code> uses <code>String</code>, in fact the id can be any <code>Hashable</code> type. UserDefaults uses Swift keypaths to refer to properties without actually invoking them. Swift rocks 🤘</p>
-</blockquote>
 <h3 id='2-create-userdefaults-stores' class='heading'>2. Create UserDefaults Stores</h3>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">usersStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"users"</span><span class="p">)</span><span class="o">!</span>
-<span class="k">let</span> <span class="nv">laptopsStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">Laptop</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"laptops"</span><span class="p">)</span><span class="o">!</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">usersStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"users"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">laptopsStore</span> <span class="o">=</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">Laptop</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="s">"laptops"</span><span class="p">)</span>
 </code></pre>
 <h3 id='3-voilà-you-39-re-all-set' class='heading'>3. Voilà, you&rsquo;re all set!</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">macbook</span> <span class="o">=</span> <span class="kt">Laptop</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="s">"A1278"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"MacBook Pro"</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">john</span> <span class="o">=</span> <span class="kt">User</span><span class="p">(</span><span class="nv">userId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">firstName</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Appleseed"</span><span class="p">,</span> <span class="nv">laptop</span><span class="p">:</span> <span class="n">macbook</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">john</span> <span class="o">=</span> <span class="kt">User</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">firstName</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Appleseed"</span><span class="p">,</span> <span class="nv">laptop</span><span class="p">:</span> <span class="n">macbook</span><span class="p">)</span>
 
 <span class="c1">// Save an object to a store</span>
 <span class="k">try!</span> <span class="n">usersStore</span><span class="o">.</span><span class="nf">save</span><span class="p">(</span><span class="n">john</span><span class="p">)</span>
@@ -213,9 +218,6 @@ let package = Package(
 <h2 id='looking-to-store-a-single-item-only' class='heading'>Looking to store a single item only?</h2>
 
 <p>Use <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift"><code><a href="Classes/SingleUserDefaultsStore.html">SingleUserDefaultsStore</a></code></a>, it enables storing and retrieving a single value of <code>Int</code>, <code>Double</code>, <code>String</code>, or any <code>Codable</code> type.</p>
-<h2 id='note-about-using-code-class-code-instead-of-code-struct-code' class='heading'>Note about using <code>class</code> instead of <code>struct</code></h2>
-
-<p>At the moment, only <code>final</code> classes are supported, please take this into consideration before using the library.</p>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
@@ -245,8 +247,8 @@ let package = Package(
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/omaralbeik/UserDefaultsStore" target="_blank" rel="external">Omar Albeik</a>. All rights reserved. (Last updated: 2020-02-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/omaralbeik/UserDefaultsStore" target="_blank" rel="external">Omar Albeik</a>. All rights reserved. (Last updated: 2020-08-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
