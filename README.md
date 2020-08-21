@@ -22,7 +22,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 ## Introducing v2.0
 
 - Removed the `Identifiable` protocol in favor of Swift's `Identifiable`.
-- Increased deployment targets to iOS `13.0`, `tvOS 13.0`, `macOS 10.15`, and `watchOS 6.0`.
+- Increased deployment targets to iOS `10.0`, `tvOS 10.0`, `macOS 10.12`, and `watchOS 3.0`.
 - Objects defined as non-final classes can now be used as well.
 - Added new `generateSnapshot()` and `restoreSnapshot(_:)` methods to generate and restore a `Snapshot` object that can be saved (e.g. to iCloud) and restored later.
 - Fixed a bug where `objectsCount` might run out of sync with the actual count of objects in store.
@@ -180,7 +180,7 @@ Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/
 
 ## Requirements
 
-- iOS 13.0+ / macOS 10.15+ / tvOS 13.0+ / watchOS 6.0+
+- iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
 - Swift 5.0+
 
 

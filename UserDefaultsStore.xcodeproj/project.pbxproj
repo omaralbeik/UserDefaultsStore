@@ -11,6 +11,7 @@
 		07563832210A3C4D005CDE89 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07563825210A3975005CDE89 /* StoreTests.swift */; };
 		078D2A692147BA7500923390 /* SingleUserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */; };
 		078D2A6C2147BD4100923390 /* SingleStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D2A6A2147BD2E00923390 /* SingleStoreTests.swift */; };
+		07CC56A724EFA01700E31373 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC56A624EFA01700E31373 /* Identifiable.swift */; };
 		07EED426210C84C200230BA4 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EED425210C84C200230BA4 /* TestUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		07563830210A3B5D005CDE89 /* UserDefaultsStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserDefaultsStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleUserDefaultsStore.swift; sourceTree = "<group>"; };
 		078D2A6A2147BD2E00923390 /* SingleStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStoreTests.swift; sourceTree = "<group>"; };
+		07CC56A624EFA01700E31373 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		07EED425210C84C200230BA4 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				0756382B210A3A59005CDE89 /* Info.plist */,
+				07CC56A624EFA01700E31373 /* Identifiable.swift */,
 				078D2A682147BA7500923390 /* SingleUserDefaultsStore.swift */,
 				0756381D210A396C005CDE89 /* UserDefaultsStore.swift */,
 			);
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07563831210A3C4A005CDE89 /* UserDefaultsStore.swift in Sources */,
+				07CC56A724EFA01700E31373 /* Identifiable.swift in Sources */,
 				078D2A692147BA7500923390 /* SingleUserDefaultsStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,17 +396,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omaralbeik.UserDefaultsStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -420,17 +424,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omaralbeik.UserDefaultsStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
