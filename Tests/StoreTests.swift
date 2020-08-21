@@ -25,11 +25,7 @@ import XCTest
 @testable import UserDefaultsStore
 
 final class StoreTests: XCTestCase {
-
-    func testCreateStore() {
-        let store = createFreshUsersStore()
-        XCTAssertNotNil(store)
-    }
+    private typealias Snapshot = UserDefaultsStore<TestUser>.Snapshot
 
     func testCreateStoreWithCustomEncoderAndDecoder() {
         let encoder = JSONEncoder()
@@ -37,8 +33,8 @@ final class StoreTests: XCTestCase {
 
         let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
         XCTAssertNotNil(store)
-        XCTAssert(store?.encoder === encoder)
-        XCTAssert(store?.decoder === decoder)
+        XCTAssert(store.encoder === encoder)
+        XCTAssert(store.decoder === decoder)
     }
 
     func testCreateStoreWithCustomDecoder() {
@@ -51,17 +47,12 @@ final class StoreTests: XCTestCase {
         let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
         XCTAssertNotNil(store)
 
-        XCTAssertNoThrow(try store?.save(TestUser.john))
-        XCTAssertEqual(store?.object(withId: TestUser.john.userId), TestUser.john)
-    }
-
-    func testCreateInvalidStore() {
-        let invalidStore = UserDefaultsStore<TestUser>(uniqueIdentifier: UserDefaults.globalDomain)
-        XCTAssertNil(invalidStore)
+        XCTAssertNoThrow(try store.save(TestUser.john))
+        XCTAssertEqual(store.object(withId: TestUser.john.id), TestUser.john)
     }
 
     func testSaveObject() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.john))
         XCTAssertEqual(store.objectsCount, 1)
@@ -69,7 +60,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testSaveOptional() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(nil))
         XCTAssertEqual(store.objectsCount, 0)
@@ -80,7 +71,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testSaveInvalidObject() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         let optionalUser: TestUser? = TestUser.invalid
         XCTAssertThrowsError(try store.save(TestUser.invalid))
@@ -88,7 +79,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testSaveObjects() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save([TestUser.john, TestUser.johnson, TestUser.james]))
         XCTAssertEqual(store.objectsCount, 3)
@@ -98,7 +89,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testSaveInvalidObjects() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertThrowsError(try store.save([TestUser.james, TestUser.john, TestUser.invalid]))
         XCTAssertEqual(store.objectsCount, 0)
@@ -106,7 +97,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testObject() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.johnson))
         let user = store.object(withId: 2)
@@ -117,19 +108,19 @@ final class StoreTests: XCTestCase {
     }
 
     func testObjects() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.james))
         XCTAssertNoThrow(try store.save(TestUser.johnson))
 
-        let users = store.objects(withIds: [TestUser.james.userId, TestUser.johnson.userId, 5])
+        let users = store.objects(withIds: [TestUser.james.id, TestUser.johnson.id, 5])
         XCTAssertEqual(users.count, 2)
         XCTAssert(users.contains(TestUser.james))
         XCTAssert(users.contains(TestUser.johnson))
     }
 
     func testDeleteObject() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.james))
 
@@ -140,19 +131,19 @@ final class StoreTests: XCTestCase {
     }
 
     func testDeleteObjects() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.james))
         XCTAssertNoThrow(try store.save(TestUser.johnson))
 
         XCTAssertEqual(store.objectsCount, 2)
 
-        store.delete(withIds: [TestUser.james.userId, 5, 6, 8])
+        store.delete(withIds: [TestUser.james.id, 5, 6, 8])
         XCTAssertEqual(store.objectsCount, 1)
     }
 
     func testGetAll() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.john))
         XCTAssertEqual(store.allObjects(), [TestUser.john])
@@ -168,7 +159,7 @@ final class StoreTests: XCTestCase {
     }
 
     func testDeleteAll() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         XCTAssertNoThrow(try store.save(TestUser.john))
         XCTAssertNoThrow(try store.save(TestUser.johnson))
@@ -179,15 +170,15 @@ final class StoreTests: XCTestCase {
     }
 
     func testHasObject() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
         XCTAssertFalse(store.hasObject(withId: 10))
 
         XCTAssertNoThrow(try store.save(TestUser.john))
-        XCTAssert(store.hasObject(withId: TestUser.john.userId))
+        XCTAssert(store.hasObject(withId: TestUser.john.id))
     }
 
     func testForEach() {
-        let store = createFreshUsersStore()!
+        let store = createFreshUsersStore()
 
         let users = [TestUser.john, TestUser.johnson, TestUser.james]
         XCTAssertNoThrow(try store.save(users))
@@ -200,22 +191,90 @@ final class StoreTests: XCTestCase {
         XCTAssertEqual(counter, 3)
     }
 
+    func testGenerateSnapshot() {
+        let store = createFreshUsersStore()
+
+        let users = [TestUser.john, TestUser.johnson].sorted()
+        XCTAssertNoThrow(try store.save(users))
+
+        XCTAssertNil(store.lastSnapshotDate)
+
+        let snapshot = store.generateSnapshot()
+
+        XCTAssertEqual(snapshot.objects.sorted(), users)
+        XCTAssertNotNil(store.lastSnapshotDate)
+        XCTAssertEqual(store.lastSnapshotDate, snapshot.dateCreated)
+    }
+
+    func testRestoreSnapshot() {
+        var store = createFreshUsersStore()
+
+        let users = [TestUser.john, TestUser.johnson].sorted()
+        XCTAssertNoThrow(try store.save(users))
+
+        let snapshot = store.generateSnapshot()
+
+        store = createFreshUsersStore()
+
+        XCTAssertNil(store.lastRestoreDate)
+        XCTAssertNoThrow(try store.restoreSnapshot(snapshot))
+        XCTAssertNotNil(store.lastRestoreDate)
+        XCTAssertEqual(store.allObjects().sorted(), users)
+    }
+
+    func testRestoreEmptySnapshot() {
+        let store = createFreshUsersStore()
+
+        let users = [TestUser.john, TestUser.johnson]
+        XCTAssertNoThrow(try store.save(users))
+
+        let snapshot = Snapshot(objects: [], dateCreated: Date())
+
+        XCTAssertNoThrow(try store.restoreSnapshot(snapshot))
+
+        XCTAssertNotNil(store.lastRestoreDate)
+        XCTAssertEqual(store.objectsCount, 0)
+    }
+
+    func testRestoreSnapshotWithInvalidObjects() {
+        let store = createFreshUsersStore()
+
+        let users = [TestUser.john, TestUser.johnson]
+        XCTAssertNoThrow(try store.save(users))
+
+        let snapshot = Snapshot(objects: [TestUser.invalid], dateCreated: Date())
+
+        XCTAssertThrowsError(try store.restoreSnapshot(snapshot))
+        XCTAssertNil(store.lastRestoreDate)
+        XCTAssertEqual(store.objectsCount, users.count)
+        XCTAssert(store.hasObject(withId: TestUser.john.id))
+        XCTAssert(store.hasObject(withId: TestUser.johnson.id))
+    }
+
+    func testSnapshotEquality() {
+        let now = Date()
+        let snapshot1 = Snapshot(objects: [TestUser.john], dateCreated: now)
+        let snapshot2 = Snapshot(objects: [TestUser.john], dateCreated: now)
+        XCTAssertEqual(snapshot1, snapshot2)
+
+        let snapshot3 = Snapshot(objects: [TestUser.john], dateCreated: Date())
+        let snapshot4 = Snapshot(objects: [TestUser.john], dateCreated: Date().addingTimeInterval(1))
+        XCTAssertNotEqual(snapshot3, snapshot4)
+    }
 }
 
 // MARK: - Helpers
 private extension StoreTests {
-
     func createFreshUsersStore(
         encoder: JSONEncoder = .init(),
         decoder: JSONDecoder = .init()
-    ) -> UserDefaultsStore<TestUser>? {
+    ) -> UserDefaultsStore<TestUser> {
         let store = UserDefaultsStore<TestUser>(
             uniqueIdentifier: "users",
             encoder: encoder,
             decoder: decoder
         )
-        store?.deleteAll()
+        store.deleteAll()
         return store
     }
-
 }

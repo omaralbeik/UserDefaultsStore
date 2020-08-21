@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          UserDefaultsStore Docs
+          UserDefaultsStore 2.0.0 Docs
         </a>
          (100% documented)
       </p>
@@ -51,15 +51,13 @@
                 <a class="nav-group-task-link" href="../Classes/SingleUserDefaultsStore.html">SingleUserDefaultsStore</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SingleUserDefaultsStore/Snapshot.html">– Snapshot</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/UserDefaultsStore.html">UserDefaultsStore</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/Identifiable.html">Identifiable</a>
+                <a class="nav-group-task-link" href="../Classes/UserDefaultsStore/Snapshot.html">– Snapshot</a>
               </li>
             </ul>
           </li>
@@ -72,7 +70,8 @@
             <h1>UserDefaultsStore</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Identifiable.html">Identifiable</a></span></code></pre>
+                  
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserDefaultsStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt">Encodable</span><span class="p">,</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt">Identifiable</span></code></pre>
 
                 </div>
               </div>
@@ -85,6 +84,35 @@
           <div class="section-content">
             <div class="task-group">
               <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17UserDefaultsStoreAAC8SnapshotV"></a>
+                    <a name="//apple_ref/swift/Struct/Snapshot" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC8SnapshotV">Snapshot</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Used to backup and restore content to store.</p>
+
+                        <a href="../Classes/UserDefaultsStore/Snapshot.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Snapshot</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt"><a href="../Classes/UserDefaultsStore.html">UserDefaultsStore</a></span><span class="o">.</span><span class="kt">Snapshot</span><span class="p">:</span> <span class="kt">Equatable</span> <span class="k">where</span> <span class="kt">Object</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -171,9 +199,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC16uniqueIdentifier7encoder7decoderAByxGSgSS_10Foundation11JSONEncoderCAH11JSONDecoderCtcfc"></a>
+                    <a name="/s:17UserDefaultsStoreAAC16uniqueIdentifier7encoder7decoderAByxGSS_10Foundation11JSONEncoderCAG11JSONDecoderCtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(uniqueIdentifier:encoder:decoder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC16uniqueIdentifier7encoder7decoderAByxGSgSS_10Foundation11JSONEncoderCAH11JSONDecoderCtcfc">init(uniqueIdentifier:encoder:decoder:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC16uniqueIdentifier7encoder7decoderAByxGSS_10Foundation11JSONEncoderCAG11JSONDecoderCtcfc">init(uniqueIdentifier:<wbr>encoder:<wbr>decoder:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -181,7 +209,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialize store with given identifier.</p>
+                        <p>Initialize store with given identifier. <em>O(1)</em></p>
 
 <p><strong>Warning</strong>: Never use the same identifier for two -or more- different stores.</p>
 
@@ -190,7 +218,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span>
+                          <pre class="highlight swift"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
     <span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
     <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">()</span>
@@ -249,7 +277,7 @@
                     <code>
                     <a name="/s:17UserDefaultsStoreAAC4saveyyxKF"></a>
                     <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyyxKF">save(_:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyyxKF">save(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -269,7 +297,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -300,7 +328,7 @@
                     <code>
                     <a name="/s:17UserDefaultsStoreAAC4saveyyxSgKF"></a>
                     <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyyxSgKF">save(_:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyyxSgKF">save(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -320,7 +348,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">optionalObject</span><span class="p">:</span> <span class="kt">T</span><span class="p">?)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">optionalObject</span><span class="p">:</span> <span class="kt">Object</span><span class="p">?)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -351,7 +379,7 @@
                     <code>
                     <a name="/s:17UserDefaultsStoreAAC4saveyySayxGKF"></a>
                     <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyySayxGKF">save(_:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC4saveyySayxGKF">save(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -371,7 +399,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">])</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -400,9 +428,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC6object6withIdxSg2IDAA12IdentifiablePQz_tF"></a>
+                    <a name="/s:17UserDefaultsStoreAAC6object6withIdxSg2IDs12IdentifiablePQz_tF"></a>
                     <a name="//apple_ref/swift/Method/object(withId:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC6object6withIdxSg2IDAA12IdentifiablePQz_tF">object(withId:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC6object6withIdxSg2IDs12IdentifiablePQz_tF">object(withId:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -417,7 +445,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">object</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">object</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -450,9 +478,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC7objects7withIdsSayxGSay2IDAA12IdentifiablePQzG_tF"></a>
+                    <a name="/s:17UserDefaultsStoreAAC7objects7withIdsSayxGSay2IDs12IdentifiablePQzG_tF"></a>
                     <a name="//apple_ref/swift/Method/objects(withIds:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC7objects7withIdsSayxGSay2IDAA12IdentifiablePQzG_tF">objects(withIds:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC7objects7withIdsSayxGSay2IDs12IdentifiablePQzG_tF">objects(withIds:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -467,7 +495,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">objects</span><span class="p">(</span><span class="n">withIds</span> <span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="o">.</span><span class="kt">ID</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">objects</span><span class="p">(</span><span class="n">withIds</span> <span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -517,7 +545,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">allObjects</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">allObjects</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -531,9 +559,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC6delete6withIdy2IDAA12IdentifiablePQz_tF"></a>
+                    <a name="/s:17UserDefaultsStoreAAC6delete6withIdy2IDs12IdentifiablePQz_tF"></a>
                     <a name="//apple_ref/swift/Method/delete(withId:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC6delete6withIdy2IDAA12IdentifiablePQz_tF">delete(withId:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC6delete6withIdy2IDs12IdentifiablePQz_tF">delete(withId:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -548,7 +576,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -577,9 +605,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC6delete7withIdsySay2IDAA12IdentifiablePQzG_tF"></a>
+                    <a name="/s:17UserDefaultsStoreAAC6delete7withIdsySay2IDs12IdentifiablePQzG_tF"></a>
                     <a name="//apple_ref/swift/Method/delete(withIds:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC6delete7withIdsySay2IDAA12IdentifiablePQzG_tF">delete(withIds:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC6delete7withIdsySay2IDs12IdentifiablePQzG_tF">delete(withIds:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -594,7 +622,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">withIds</span> <span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="o">.</span><span class="kt">ID</span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">withIds</span> <span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -677,9 +705,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17UserDefaultsStoreAAC9hasObject6withIdSb2IDAA12IdentifiablePQz_tF"></a>
+                    <a name="/s:17UserDefaultsStoreAAC9hasObject6withIdSb2IDs12IdentifiablePQz_tF"></a>
                     <a name="//apple_ref/swift/Method/hasObject(withId:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC9hasObject6withIdSb2IDAA12IdentifiablePQz_tF">hasObject(withId:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC9hasObject6withIdSb2IDs12IdentifiablePQz_tF">hasObject(withId:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -694,7 +722,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasObject</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasObject</span><span class="p">(</span><span class="n">withId</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -729,7 +757,7 @@
                     <code>
                     <a name="/s:17UserDefaultsStoreAAC7forEachyyyxXEF"></a>
                     <a name="//apple_ref/swift/Method/forEach(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17UserDefaultsStoreAAC7forEachyyyxXEF">forEach(_:)</a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC7forEachyyyxXEF">forEach(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -744,7 +772,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">forEach</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">forEach</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="p">(</span><span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -770,6 +798,142 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17UserDefaultsStoreAAC16generateSnapshotAB0E0Vyx_GyF"></a>
+                    <a name="//apple_ref/swift/Method/generateSnapshot()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC16generateSnapshotAB0E0Vyx_GyF">generateSnapshot()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generate a snapshot that can be saved and restored later. <em>O(n)</em></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">generateSnapshot</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></code> object representing current contents of the store.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17UserDefaultsStoreAAC15restoreSnapshotyyAB0E0Vyx_GKF"></a>
+                    <a name="//apple_ref/swift/Method/restoreSnapshot(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC15restoreSnapshotyyAB0E0Vyx_GKF">restoreSnapshot(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Restore a pre-generated <code><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></code>. <em>O(n)</em></p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    JSON encoding/decoding error.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">restoreSnapshot</span><span class="p">(</span><span class="n">_</span> <span class="nv">snapshot</span><span class="p">:</span> <span class="kt"><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>snapshot</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></code> to restore.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17UserDefaultsStoreAAC16lastSnapshotDate10Foundation0F0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lastSnapshotDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC16lastSnapshotDate10Foundation0F0VSgvp">lastSnapshotDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date when the last <code><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></code> was generated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lastSnapshotDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17UserDefaultsStoreAAC15lastRestoreDate10Foundation0F0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lastRestoreDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17UserDefaultsStoreAAC15lastRestoreDate10Foundation0F0VSgvp">lastRestoreDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date when the last <code><a href="../Classes/UserDefaultsStore/Snapshot.html">Snapshot</a></code> was successfully restored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lastRestoreDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -778,8 +942,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/omaralbeik/UserDefaultsStore" target="_blank" rel="external">Omar Albeik</a>. All rights reserved. (Last updated: 2020-02-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/omaralbeik/UserDefaultsStore" target="_blank" rel="external">Omar Albeik</a>. All rights reserved. (Last updated: 2020-08-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

@@ -25,7 +25,6 @@ jobs:
       run: |
         brew update
         brew outdated xctool || brew upgrade xctool
-        brew install swiftlint
     - name: Test iOS
       run: |
         xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-ios.json" xcpretty -f `xcpretty-json-formatter`
@@ -57,15 +56,6 @@ jobs:
           SCHEME: UserDefaultsStore
           DESTINATION: name=Apple Watch Series 5 - 40mm
         
-  Swiftlint:
-    runs-on: [macos]
-    name: SwiftLint
-    steps: 
-      - uses: actions/checkout@v1
-      - name: SwiftLint
-        run: |
-          brew install swiftlint
-          swiftlint
   CocoaPods:
     name: CocoaPods
     runs-on: macos-latest
