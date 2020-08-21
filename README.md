@@ -121,7 +121,6 @@ struct Laptop: Codable, Identifiable {
 }
 ```
 
-
 ### 2. Create UserDefaults Stores
 
 ```swift
@@ -170,9 +169,7 @@ let snapshot = usersStore.generateSnapshot()
 
 // Restore a pre-generated snapshot
 try? usersStore.restoreSnapshot(snapshot)
-
 ```
-
 
 ## Looking to store a single item only?
 

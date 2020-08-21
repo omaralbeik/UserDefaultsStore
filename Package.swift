@@ -40,5 +40,5 @@ let package = Package(
         .target(name: "UserDefaultsStore", dependencies: [], path: "Sources"),
         .testTarget(name: "UserDefaultsStoreTests", dependencies: ["UserDefaultsStore"], path: "Tests")
     ],
-    swiftLanguageVersions: [.v5])
+    swiftLanguageVersions: [.v5]
 )
