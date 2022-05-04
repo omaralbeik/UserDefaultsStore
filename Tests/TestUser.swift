@@ -24,27 +24,27 @@
 @testable import UserDefaultsStore
 
 struct TestUser: Codable, Equatable, Comparable, CustomStringConvertible, Identifiable {
-    let id: Int
-    let firstName: String
-    let lastName: String
-    let age: Double
+  let id: Int
+  let firstName: String
+  let lastName: String
+  let age: Double
 
-    static func == (lhs: TestUser, rhs: TestUser) -> Bool {
-        return lhs.id == rhs.id
-    }
+  static func == (lhs: TestUser, rhs: TestUser) -> Bool {
+    return lhs.id == rhs.id
+  }
 
-    static func < (lhs: TestUser, rhs: TestUser) -> Bool {
-        lhs.id < rhs.id
-    }
+  static func < (lhs: TestUser, rhs: TestUser) -> Bool {
+    lhs.id < rhs.id
+  }
 
-    var description: String {
-        return firstName
-    }
+  var description: String {
+    return firstName
+  }
 
-    static let john = TestUser(id: 1, firstName: "John", lastName: "Appleseed", age: 21.5)
-    static let johnson = TestUser(id: 2, firstName: "Johnson", lastName: "Smith", age: 26.3)
-    static let james = TestUser(id: 3, firstName: "James", lastName: "Robert", age: 14)
+  static let john = TestUser(id: 1, firstName: "John", lastName: "Appleseed", age: 21.5)
+  static let johnson = TestUser(id: 2, firstName: "Johnson", lastName: "Smith", age: 26.3)
+  static let james = TestUser(id: 3, firstName: "James", lastName: "Robert", age: 14)
 
-    static let invalid = TestUser(id: 4, firstName: "", lastName: "", age: .nan)
+  static let invalid = TestUser(id: 4, firstName: "", lastName: "", age: .nan)
 
 }

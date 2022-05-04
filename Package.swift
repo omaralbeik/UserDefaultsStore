@@ -25,20 +25,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "UserDefaultsStore",
-    platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
-        .tvOS(.v13),
-        .watchOS(.v6)
-    ],
-    products: [
-        .library(name: "UserDefaultsStore", targets: ["UserDefaultsStore"])
-    ],
-    dependencies: [],
-    targets: [
-        .target(name: "UserDefaultsStore", dependencies: [], path: "Sources"),
-        .testTarget(name: "UserDefaultsStoreTests", dependencies: ["UserDefaultsStore"], path: "Tests")
-    ],
-    swiftLanguageVersions: [.v5]
+  name: "UserDefaultsStore",
+  platforms: [
+    .iOS(.v13),
+    .macOS(.v10_15),
+    .tvOS(.v13),
+    .watchOS(.v6)
+  ],
+  products: [
+    .library(name: "UserDefaultsStore", targets: ["UserDefaultsStore"])
+  ],
+  dependencies: [],
+  targets: [
+    .target(name: "UserDefaultsStore", dependencies: [], path: "Sources"),
+    .testTarget(name: "UserDefaultsStoreTests", dependencies: ["UserDefaultsStore"], path: "Tests")
+  ],
+  swiftLanguageVersions: [.v5]
 )
