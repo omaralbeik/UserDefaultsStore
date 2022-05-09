@@ -9,26 +9,55 @@ on:
       - master
 
 jobs:
-  test:
+  Darwin:
+    name: Darwin
     runs-on: macos-latest
-
+    env:
+      PROJECT: UserDefaultsStore.xcodeproj
     steps:
-      - name: Get Sources
-        uses: actions/checkout@v2
-
-      - name: Build Package
-        run: swift build -v
-
-      - name: Run tests
-        run: swift test --enable-code-coverage -v
-      
-      - name: Gather code coverage
-        run: xcrun llvm-cov export -format="lcov" .build/debug/UserDefaultsStoreTests.xctest/Contents/MacOS/UserDefaultsStoreTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: fail
-          files: ./coverage_report.lcov
-          verbose: true
+    - uses: actions/checkout@v1
+    - name: Bundle Install
+      run: bundle install
+    - name: Brew Upgrade
+      run: |
+        brew update
+        brew outdated xctool || brew upgrade xctool
+    - name: Test iOS
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-ios.json" xcpretty -f `xcpretty-json-formatter`
+        bash <(curl -s https://codecov.io/bash) -cF ios -J 'UserDefaultsStore'
+      env:
+          SCHEME: UserDefaultsStore
+          DESTINATION: platform=iOS Simulator,name=iPhone 11
+    - name: Test macOS
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-macos.json" xcpretty -f `xcpretty-json-formatter`
+        bash <(curl -s https://codecov.io/bash) -cF macos -J 'UserDefaultsStore'
+      env:
+          SCHEME: UserDefaultsStore
+          DESTINATION: platform=OS X
+    - name: Test tvOS
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-tvos.json" xcpretty -f `xcpretty-json-formatter`
+        bash <(curl -s https://codecov.io/bash) -cF tvos -J 'UserDefaultsStore'
+      env:
+          SCHEME: UserDefaultsStore
+          DESTINATION: platform=tvOS Simulator,name=Apple TV 4K (at 1080p)
+    - name: Build watchOS
+      run: xcodebuild clean build -project $PROJECT -scheme $SCHEME -destination "$DESTINATION"
+      env:
+          SCHEME: UserDefaultsStore
+          DESTINATION: name=Apple Watch Series 5 - 40mm
+        
+  CocoaPods:
+    name: CocoaPods
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        platform: ['ios', 'macos', 'tvos', 'watchos']
+    steps:
+    - uses: actions/checkout@v1
+    - name: Bundle Install
+      run: bundle install
+    - name: CocoaPods ${{ matrix.platform }}
+      run: bundle exec pod lib lint --skip-tests --allow-warnings --verbose --platforms=${{ matrix.platform }} 
