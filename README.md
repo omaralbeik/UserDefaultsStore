@@ -21,55 +21,27 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ## Installation
 
-<details>
-<summary>Swift Package Manager (Recommended)</summary>
-</br>
-<p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code>UserDefaultsStore</code> by adding the proper description to your <code>Package.swift</code> file:</p>
+### Swift Package Manager
 
-<pre><code class="swift language-swift">import PackageDescription
+1. Add the following to your `Package.swift` file:
 
-let package = Package(
-    name: "YOUR_PROJECT_NAME",
-    targets: [],
-    dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.1.0")
-    ]
-)
-</code></pre>
+```swift
+dependencies: [
+    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.1.0")
+]
+```
 
-<p>Next, add <code>UserDefaultsStore</code> to your targets dependencies like so:</p>
-<pre><code class="swift language-swift">.target(
-    name: "YOUR_TARGET_NAME",
-    dependencies: [
-        "UserDefaultsStore",
-    ]
-),</code></pre>
-<p>Then run <code>swift package update</code>.</p>
-</details>
+2. Build your project:
 
+```sh
+$ swift build
+```
 
-<details>
-<summary>CocoaPods</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="http://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
-<pre><code class="ruby language-ruby">pod 'UserDefaultsStore'</code></pre>
-</details>
+### Manually
 
-<details>
-<summary>Carthage</summary>
-</br>
-<p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources) folder to your Xcode project.
 
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 2.1.0
-</code></pre>
-</details>
-
-<details>
-<summary>Manually</summary>
-</br>
-<p>Add the <a href="https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources">Sources</a> folder to your Xcode project.</p>
-</details>
-
+---
 
 ## Usage
 
