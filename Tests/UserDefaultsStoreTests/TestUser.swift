@@ -1,6 +1,5 @@
-// swift-tools-version:5.5
 //
-//  SingleUserDefaultsStore
+//  UserDefaultsStore
 //
 //  Copyright (c) 2018-Present Omar Albeik - https://github.com/omaralbeik
 //
@@ -22,31 +21,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import PackageDescription
+@testable import UserDefaultsStore
 
-let package = Package(
-    name: "UserDefaultsStore",
-    platforms: [
-      .iOS(.v13),
-      .macOS(.v10_15),
-      .tvOS(.v13),
-      .watchOS(.v6)
-    ],
-    products: [
-        .library(
-            name: "UserDefaultsStore",
-            targets: ["UserDefaultsStore"]
-        )
-    ],
-    dependencies: [],
-    targets: [
-        .target(
-            name: "UserDefaultsStore",
-            dependencies: []
-        ),
-        .testTarget(
-            name: "UserDefaultsStoreTests",
-            dependencies: ["UserDefaultsStore"]
-        )
-    ]
-)
+struct TestUser: Codable, Equatable, Comparable, CustomStringConvertible, Identifiable {
+  let id: Int
+  var firstName: String
+  var lastName: String
+  var age: Double
+
+  static func == (lhs: TestUser, rhs: TestUser) -> Bool {
+    return lhs.id == rhs.id
+  }
+
+  static func < (lhs: TestUser, rhs: TestUser) -> Bool {
+    lhs.id < rhs.id
+  }
+
+  var description: String {
+    return firstName
+  }
+
+  static let john = TestUser(id: 1, firstName: "John", lastName: "Appleseed", age: 21.5)
+  static let johnson = TestUser(id: 2, firstName: "Johnson", lastName: "Smith", age: 26.3)
+  static let james = TestUser(id: 3, firstName: "James", lastName: "Robert", age: 14)
+
+  static let invalid = TestUser(id: 4, firstName: "", lastName: "", age: .nan)
+
+}
