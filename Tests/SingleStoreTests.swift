@@ -27,6 +27,12 @@ import XCTest
 final class SingleStoreTests: XCTestCase {
   private typealias Snapshot = SingleUserDefaultsStore<TestUser>.Snapshot
 
+  func testCreateStore() {
+    let uniqueIdentifier = UUID().uuidString
+    let store = SingleUserDefaultsStore<TestUser>(uniqueIdentifier: uniqueIdentifier)
+    XCTAssertEqual(store.uniqueIdentifier, uniqueIdentifier)
+  }
+
   func testCreateStoreWithCustomEncoderAndDecoder() {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()

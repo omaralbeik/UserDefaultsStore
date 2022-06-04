@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.6
 //
 //  SingleUserDefaultsStore
 //
@@ -35,7 +35,9 @@ let package = Package(
   products: [
     .library(name: "UserDefaultsStore", targets: ["UserDefaultsStore"])
   ],
-  dependencies: [],
+  dependencies: [
+    .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0")
+  ],
   targets: [
     .target(name: "UserDefaultsStore", dependencies: [], path: "Sources"),
     .testTarget(name: "UserDefaultsStoreTests", dependencies: ["UserDefaultsStore"], path: "Tests")

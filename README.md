@@ -19,16 +19,6 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ---
 
-## Introducing v2.0
-
-- Removed the `Identifiable` protocol in favor of Swift's `Identifiable`.
-- Increased deployment targets to iOS `13.0`, `tvOS 13.0`, `macOS 10.15`, and `watchOS 6.0`.
-- Objects defined as non-final classes can now be used as well.
-- Added new `generateSnapshot()` and `restoreSnapshot(_:)` methods to generate and restore a `Snapshot` object that can be saved (e.g. to iCloud) and restored later.
-- Fixed a bug where `objectsCount` might run out of sync with the actual count of objects in store.
-
----
-
 ## Installation
 
 <details>
@@ -42,7 +32,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.0.0")
+        .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.1.0")
     ]
 )
 </code></pre>
@@ -70,7 +60,7 @@ let package = Package(
 </br>
 <p>To integrate UserDefaultsStore into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
 
-<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 2.0.0
+<pre><code class="ogdl language-ogdl">github "omaralbeik/UserDefaultsStore" ~&gt; 2.1.0
 </code></pre>
 </details>
 

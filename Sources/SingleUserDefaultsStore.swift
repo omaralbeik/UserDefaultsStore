@@ -25,6 +25,7 @@ import Foundation
 
 /// `SingleUserDefaultsStore` offers a convenient way to store a single `Codable` object in `UserDefaults`.
 open class SingleUserDefaultsStore<Object: Codable> {
+  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
   /// Used to backup and restore content to store.
   public struct Snapshot: Codable {
     /// Object.
@@ -49,9 +50,11 @@ open class SingleUserDefaultsStore<Object: Codable> {
   public let uniqueIdentifier: String
 
   /// JSON encoder to be used for encoding object to be stored.
+  @available(*, deprecated, message: "Overriding encoder will be removed in future releases.")
   open var encoder: JSONEncoder
 
   /// JSON decoder to be used to decode the stored object.
+  @available(*, deprecated, message: "Overriding decoder will be removed in future releases.")
   open var decoder: JSONDecoder
 
   /// UserDefaults store.
@@ -62,15 +65,31 @@ open class SingleUserDefaultsStore<Object: Codable> {
   /// **Warning**: Never use the same identifier for two -or more- different stores.
   ///
   /// - Parameter uniqueIdentifier: store's unique identifier.
+  required public init(uniqueIdentifier: String) {
+    guard let store = UserDefaults(suiteName: uniqueIdentifier) else {
+      preconditionFailure("Can not create a store with identifier: '\(uniqueIdentifier)'.")
+    }
+    self.uniqueIdentifier = uniqueIdentifier
+    self.encoder = .init()
+    self.decoder = .init()
+    self.store = store
+  }
+
+  /// Initialize store with given identifier. _O(1)_
+  ///
+  /// **Warning**: Never use the same identifier for two -or more- different stores.
+  ///
+  /// - Parameter uniqueIdentifier: store's unique identifier.
   /// - Parameter encoder: JSON encoder to be used for encoding object to be stored. _default is `JSONEncoder()`_
   /// - Parameter decoder: JSON decoder to be used to decode the stored object. _default is `JSONDecoder()`_
+  @available(*, deprecated, message: "Initializing with custom encoder/decoder will be removed in future releases.")
   required public init(
     uniqueIdentifier: String,
     encoder: JSONEncoder = .init(),
     decoder: JSONDecoder = .init()
   ) {
     guard let store = UserDefaults(suiteName: uniqueIdentifier) else {
-      fatalError("Can not create a store with identifier: '\(uniqueIdentifier)'.")
+      preconditionFailure("Can not create a store with identifier: '\(uniqueIdentifier)'.")
     }
     self.uniqueIdentifier = uniqueIdentifier
     self.encoder = encoder
@@ -102,6 +121,7 @@ open class SingleUserDefaultsStore<Object: Codable> {
 
   /// Generate a snapshot that can be saved and restored later. _O(1)_
   /// - Returns: `Snapshot` object representing current contents of the store.
+  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
   public func generateSnapshot() -> Snapshot {
     let now = Date()
     store.setValue(now, forKey: lastSnapshotDateKey)
@@ -111,6 +131,7 @@ open class SingleUserDefaultsStore<Object: Codable> {
   /// Restore a pre-generated `Snapshot`. _O(1)_
   /// - Parameter snapshot: `Snapshot` to restore.
   /// - Throws: JSON encoding/decoding error.
+  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
   public func restoreSnapshot(_ snapshot: Snapshot) throws {
     let now = Date()
     guard let object = snapshot.object else {
@@ -133,11 +154,13 @@ open class SingleUserDefaultsStore<Object: Codable> {
   }
 
   /// Date when the last `Snapshot` was generated.
+  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
   public var lastSnapshotDate: Date? {
     return store.value(forKey: lastSnapshotDateKey) as? Date
   }
 
   /// Date when the last `Snapshot` was successfully restored.
+  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
   public var lastRestoreDate: Date? {
     return store.value(forKey: lastRestoreDateKey) as? Date
   }

@@ -25,9 +25,9 @@
 
 struct TestUser: Codable, Equatable, Comparable, CustomStringConvertible, Identifiable {
   let id: Int
-  let firstName: String
-  let lastName: String
-  let age: Double
+  var firstName: String
+  var lastName: String
+  var age: Double
 
   static func == (lhs: TestUser, rhs: TestUser) -> Bool {
     return lhs.id == rhs.id

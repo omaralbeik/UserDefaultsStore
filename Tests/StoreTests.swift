@@ -27,6 +27,12 @@ import XCTest
 final class StoreTests: XCTestCase {
   private typealias Snapshot = UserDefaultsStore<TestUser>.Snapshot
 
+  func testCreateStore() {
+    let uniqueIdentifier = UUID().uuidString
+    let store = UserDefaultsStore<TestUser>(uniqueIdentifier: uniqueIdentifier)
+    XCTAssertEqual(store.uniqueIdentifier, uniqueIdentifier)
+  }
+
   func testCreateStoreWithCustomEncoderAndDecoder() {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
@@ -189,6 +195,21 @@ final class StoreTests: XCTestCase {
       counter += 1
     }
     XCTAssertEqual(counter, 3)
+  }
+
+  func testUpdatingSameObjectDoesNotChangeCount() throws {
+    let store = createFreshUsersStore()
+
+    let users = [TestUser.john, TestUser.johnson, TestUser.james]
+    try store.save(users)
+
+    var john = TestUser.john
+    for i in 0..<10 {
+      john.firstName = "\(i)"
+      try store.save(john)
+    }
+
+    XCTAssertEqual(store.objectsCount, users.count)
   }
 
   func testGenerateSnapshot() {
