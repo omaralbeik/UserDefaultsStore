@@ -19,6 +19,14 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ---
 
+## New in v3.0
+
+- Both `UserDefaultsStore` and `SingleUserDefaultsStore` are thread safe!
+- **BREAKING**: Use of custom encoder/decoder has been removed.
+- **BREAKING**: Snapshots has been removed.
+
+---
+
 ## Installation
 
 ### Swift Package Manager
@@ -27,7 +35,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.1.0")
+    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "3.0.0")
 ]
 ```
 

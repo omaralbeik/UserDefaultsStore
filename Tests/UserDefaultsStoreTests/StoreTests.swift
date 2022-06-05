@@ -25,36 +25,10 @@ import XCTest
 @testable import UserDefaultsStore
 
 final class StoreTests: XCTestCase {
-  private typealias Snapshot = UserDefaultsStore<TestUser>.Snapshot
-
   func testCreateStore() {
     let uniqueIdentifier = UUID().uuidString
     let store = UserDefaultsStore<TestUser>(uniqueIdentifier: uniqueIdentifier)
     XCTAssertEqual(store.uniqueIdentifier, uniqueIdentifier)
-  }
-
-  func testCreateStoreWithCustomEncoderAndDecoder() {
-    let encoder = JSONEncoder()
-    let decoder = JSONDecoder()
-
-    let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
-    XCTAssertNotNil(store)
-    XCTAssert(store.encoder === encoder)
-    XCTAssert(store.decoder === decoder)
-  }
-
-  func testCreateStoreWithCustomDecoder() {
-    let encoder = JSONEncoder()
-    encoder.keyEncodingStrategy = .useDefaultKeys
-
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-    let store = createFreshUsersStore(encoder: encoder, decoder: decoder)
-    XCTAssertNotNil(store)
-
-    XCTAssertNoThrow(try store.save(TestUser.john))
-    XCTAssertEqual(store.object(withId: TestUser.john.id), TestUser.john)
   }
 
   func testSaveObject() {
@@ -212,89 +186,39 @@ final class StoreTests: XCTestCase {
     XCTAssertEqual(store.objectsCount, users.count)
   }
 
-  func testGenerateSnapshot() {
+  func testThreadSafety() {
     let store = createFreshUsersStore()
+    let expectation1 = XCTestExpectation(description: "Store has 1000 items.")
+    for i in 0..<1_000 {
+      Thread.detachNewThread {
+        let user = TestUser(id: i, firstName: "", lastName: "", age: .random(in: 1..<90))
+        try? store.save(user)
+      }
+    }
+    Thread.sleep(forTimeInterval: 2)
+    if store.objectsCount == 1_000 {
+      expectation1.fulfill()
+    }
 
-    let users = [TestUser.john, TestUser.johnson].sorted()
-    XCTAssertNoThrow(try store.save(users))
+    let expectation2 = XCTestExpectation(description: "Store has 500 items.")
+    for i in 0..<500 {
+      Thread.detachNewThread {
+        store.delete(withId: i)
+      }
+    }
+    Thread.sleep(forTimeInterval: 2)
+    if store.objectsCount == 500 {
+      expectation2.fulfill()
+    }
 
-    XCTAssertNil(store.lastSnapshotDate)
-
-    let snapshot = store.generateSnapshot()
-
-    XCTAssertEqual(snapshot.objects.sorted(), users)
-    XCTAssertNotNil(store.lastSnapshotDate)
-    XCTAssertEqual(store.lastSnapshotDate, snapshot.dateCreated)
-  }
-
-  func testRestoreSnapshot() {
-    var store = createFreshUsersStore()
-
-    let users = [TestUser.john, TestUser.johnson].sorted()
-    XCTAssertNoThrow(try store.save(users))
-
-    let snapshot = store.generateSnapshot()
-
-    store = createFreshUsersStore()
-
-    XCTAssertNil(store.lastRestoreDate)
-    XCTAssertNoThrow(try store.restoreSnapshot(snapshot))
-    XCTAssertNotNil(store.lastRestoreDate)
-    XCTAssertEqual(store.allObjects().sorted(), users)
-  }
-
-  func testRestoreEmptySnapshot() {
-    let store = createFreshUsersStore()
-
-    let users = [TestUser.john, TestUser.johnson]
-    XCTAssertNoThrow(try store.save(users))
-
-    let snapshot = Snapshot(objects: [], dateCreated: Date())
-
-    XCTAssertNoThrow(try store.restoreSnapshot(snapshot))
-
-    XCTAssertNotNil(store.lastRestoreDate)
-    XCTAssertEqual(store.objectsCount, 0)
-  }
-
-  func testRestoreSnapshotWithInvalidObjects() {
-    let store = createFreshUsersStore()
-
-    let users = [TestUser.john, TestUser.johnson]
-    XCTAssertNoThrow(try store.save(users))
-
-    let snapshot = Snapshot(objects: [TestUser.invalid], dateCreated: Date())
-
-    XCTAssertThrowsError(try store.restoreSnapshot(snapshot))
-    XCTAssertNil(store.lastRestoreDate)
-    XCTAssertEqual(store.objectsCount, users.count)
-    XCTAssert(store.hasObject(withId: TestUser.john.id))
-    XCTAssert(store.hasObject(withId: TestUser.johnson.id))
-  }
-
-  func testSnapshotEquality() {
-    let now = Date()
-    let snapshot1 = Snapshot(objects: [TestUser.john], dateCreated: now)
-    let snapshot2 = Snapshot(objects: [TestUser.john], dateCreated: now)
-    XCTAssertEqual(snapshot1, snapshot2)
-
-    let snapshot3 = Snapshot(objects: [TestUser.john], dateCreated: Date())
-    let snapshot4 = Snapshot(objects: [TestUser.john], dateCreated: Date().addingTimeInterval(1))
-    XCTAssertNotEqual(snapshot3, snapshot4)
+    wait(for: [expectation1, expectation2], timeout: 5)
   }
 }
 
 // MARK: - Helpers
 private extension StoreTests {
-  func createFreshUsersStore(
-    encoder: JSONEncoder = .init(),
-    decoder: JSONDecoder = .init()
-  ) -> UserDefaultsStore<TestUser> {
-    let store = UserDefaultsStore<TestUser>(
-      uniqueIdentifier: "users",
-      encoder: encoder,
-      decoder: decoder
-    )
+  func createFreshUsersStore(uniqueIdentifier: String = "users") -> UserDefaultsStore<TestUser> {
+    let store = UserDefaultsStore<TestUser>(uniqueIdentifier: uniqueIdentifier)
     store.deleteAll()
     return store
   }

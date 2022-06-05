@@ -24,24 +24,18 @@
 import Foundation
 
 /// `UserDefaultsStore` offers a convenient way to store a collection of `Codable` objects in `UserDefaults`.
+/// It is safe to use the store in multiple threads.
 open class UserDefaultsStore<Object: Codable & Identifiable> {
-  /// Used to backup and restore content to store.
-  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
-  public struct Snapshot: Codable {
-    /// Array of objects.
-    public let objects: [Object]
 
-    /// Date when the snapshot was created.
-    public let dateCreated: Date
+  private let store: UserDefaults
+  private let encoder = JSONEncoder()
+  private let decoder = JSONDecoder()
+  private let lock = NSRecursiveLock()
 
-    /// Create a new `Snapshot`.
-    /// - Parameters:
-    ///   - object: Array of objects to include in the snapshot.
-    ///   - dateCreated: Date when the snapshot was created.
-    public init(objects: [Object], dateCreated: Date) {
-      self.objects = objects
-      self.dateCreated = dateCreated
-    }
+  private func sync(action: () throws -> Void) rethrows {
+    lock.lock()
+    try action()
+    lock.unlock()
   }
 
   /// Store's unique identifier.
@@ -49,18 +43,7 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   /// **Warning**: Never use the same identifier for two -or more- different stores.
   public let uniqueIdentifier: String
 
-  /// JSON encoder to be used for encoding objects to be stored.
-  @available(*, deprecated, message: "Overriding encoder will be removed in future releases.")
-  open var encoder: JSONEncoder
-
-  /// JSON decoder to be used to decode stored objects.
-  @available(*, deprecated, message: "Overriding decoder will be removed in future releases.")
-  open var decoder: JSONDecoder
-
-  /// UserDefaults store.
-  private let store: UserDefaults
-
-  /// Initialize store with given identifier. _O(1)_
+  /// Initialize store with given identifier.
   ///
   /// **Warning**: Never use the same identifier for two -or more- different stores.
   ///
@@ -70,30 +53,6 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
       preconditionFailure("Can not create a store with identifier: '\(uniqueIdentifier)'.")
     }
     self.uniqueIdentifier = uniqueIdentifier
-    self.encoder = .init()
-    self.decoder = .init()
-    self.store = store
-  }
-
-  /// Initialize store with given identifier. _O(1)_
-  ///
-  /// **Warning**: Never use the same identifier for two -or more- different stores.
-  ///
-  /// - Parameter uniqueIdentifier: store's unique identifier.
-  /// - Parameter encoder: JSON encoder to be used for encoding objects to be stored. _default is `JSONEncoder()`_
-  /// - Parameter decoder: JSON decoder to be used to decode stored objects. _default is `JSONDecoder()`_
-  @available(*, deprecated, message: "Initializing with custom encoder/decoder will be removed in future releases.")
-  required public init(
-    uniqueIdentifier: String,
-    encoder: JSONEncoder = .init(),
-    decoder: JSONDecoder = .init()
-  ) {
-    guard let store = UserDefaults(suiteName: uniqueIdentifier) else {
-      preconditionFailure("Can not create a store with identifier: '\(uniqueIdentifier)'.")
-    }
-    self.uniqueIdentifier = uniqueIdentifier
-    self.encoder = encoder
-    self.decoder = decoder
     self.store = store
   }
 
@@ -102,12 +61,14 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   /// - Parameter object: object to save.
   /// - Throws: JSON encoding error.
   public func save(_ object: Object) throws {
-    let data = try encoder.encode(object)
-    let key = key(for: object)
-    if store.object(forKey: key) == nil {
-      increaseCounter()
+    try sync {
+      let data = try encoder.encode(object)
+      let key = key(for: object)
+      if store.object(forKey: key) == nil {
+        increaseCounter()
+      }
+      store.set(data, forKey: key)
     }
-    store.set(data, forKey: key)
   }
 
   /// Save optional object (if not nil) to store. _O(1)_
@@ -115,8 +76,10 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   /// - Parameter optionalObject: optional object to save.
   /// - Throws: JSON encoding error.
   public func save(_ optionalObject: Object?) throws {
-    guard let object = optionalObject else { return }
-    try save(object)
+    try sync {
+      guard let object = optionalObject else { return }
+      try save(object)
+    }
   }
 
   /// Save array of m objects to store. _O(m)_
@@ -124,12 +87,14 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   /// - Parameter objects: object to save.
   /// - Throws: JSON encoding error.
   public func save(_ objects: [Object]) throws {
-    let pairs = try objects.map({ (key: key(for: $0), data: try encoder.encode($0)) })
-    pairs.forEach { pair in
-      if store.object(forKey: pair.key) == nil {
-        increaseCounter()
+    try sync {
+      let pairs = try objects.map({ (key: key(for: $0), data: try encoder.encode($0)) })
+      pairs.forEach { pair in
+        if store.object(forKey: pair.key) == nil {
+          increaseCounter()
+        }
+        store.set(pair.data, forKey: pair.key)
       }
-      store.set(pair.data, forKey: pair.key)
     }
   }
 
@@ -167,22 +132,28 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   ///
   /// - Parameter id: object id.
   public func delete(withId id: Object.ID) {
-    guard hasObject(withId: id) else { return }
-    store.removeObject(forKey: key(for: id))
-    decreaseCounter()
+    sync {
+      guard hasObject(withId: id) else { return }
+      store.removeObject(forKey: key(for: id))
+      decreaseCounter()
+    }
   }
 
   /// Delete objects with ids from given m ids array. _O(m)_
   ///
   /// - Parameter ids: array of ids.
   public func delete(withIds ids: [Object.ID]) {
-    ids.forEach { delete(withId: $0) }
+    sync {
+      ids.forEach { delete(withId: $0) }
+    }
   }
 
   /// Delete all objects in store. _O(1)_
   public func deleteAll() {
-    store.removePersistentDomain(forName: uniqueIdentifier)
-    store.removeSuite(named: uniqueIdentifier)
+    sync {
+      store.removePersistentDomain(forName: uniqueIdentifier)
+      store.removeSuite(named: uniqueIdentifier)
+    }
   }
 
   /// Count of all objects in store. _O(1)_
@@ -202,62 +173,9 @@ open class UserDefaultsStore<Object: Codable & Identifiable> {
   ///
   /// - Parameter object: iteration block.
   public func forEach(_ object: (Object) -> Void) {
+    lock.lock()
     allObjects().forEach { object($0) }
-  }
-
-  /// Generate a snapshot that can be saved and restored later. _O(n)_
-  /// - Returns: `Snapshot` object representing current contents of the store.
-  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
-  public func generateSnapshot() -> Snapshot {
-    let now = Date()
-    store.setValue(now, forKey: lastSnapshotDateKey)
-    return Snapshot(objects: allObjects(), dateCreated: now)
-  }
-
-  /// Restore a pre-generated `Snapshot`. _O(n)_
-  /// - Parameter snapshot: `Snapshot` to restore.
-  /// - Throws: JSON encoding/decoding error.
-  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
-  public func restoreSnapshot(_ snapshot: Snapshot) throws {
-    let now = Date()
-    guard !snapshot.objects.isEmpty else {
-      deleteAll()
-      store.setValue(now, forKey: lastRestoreDateKey)
-      return
-    }
-
-    let current = allObjects()
-    deleteAll()
-    do {
-      try save(snapshot.objects)
-      store.setValue(now, forKey: lastRestoreDateKey)
-    } catch {
-      try save(current)
-      throw error
-    }
-  }
-
-  /// Date when the last `Snapshot` was generated.
-  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
-  public var lastSnapshotDate: Date? {
-    return store.value(forKey: lastSnapshotDateKey) as? Date
-  }
-
-  /// Date when the last `Snapshot` was successfully restored.
-  @available(*, deprecated, message: "Snapshots will be removed in future releases.")
-  public var lastRestoreDate: Date? {
-    return store.value(forKey: lastRestoreDateKey) as? Date
-  }
-}
-
-extension UserDefaultsStore.Snapshot: Equatable where Object: Equatable {
-  /// Returns a Boolean value indicating whether two snapshots are equal.
-  ///
-  /// - Parameters:
-  ///   - lhs: A `Snapshot` object to compare.
-  ///   - rhs: Another `Snapshot` object to compare.
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    return lhs.objects == rhs.objects && lhs.dateCreated == rhs.dateCreated
+    lock.unlock()
   }
 }
 
@@ -283,16 +201,6 @@ private extension UserDefaultsStore {
   /// counter key.
   var counterKey: String {
     return "\(uniqueIdentifier)-count"
-  }
-
-  /// last snapshot date key.
-  var lastSnapshotDateKey: String {
-    return "\(uniqueIdentifier)-last-snapshot-date"
-  }
-
-  /// last restore date key.
-  var lastRestoreDateKey: String {
-    return "\(uniqueIdentifier)-last-restore-date"
   }
 
   /// store key for object.
