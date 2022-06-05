@@ -47,7 +47,7 @@ $ swift build
 
 ### Manually
 
-Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources) folder to your Xcode project.
+Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources/UserDefaultsStore) folder to your Xcode project.
 
 ---
 
@@ -137,7 +137,7 @@ let usersCount = usersStore.objectsCount
 
 ## Looking to store a single item only?
 
-Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/main/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
+Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources/UserDefaultsStore/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
 
 ## Requirements
 
