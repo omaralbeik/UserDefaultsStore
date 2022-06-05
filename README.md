@@ -5,17 +5,21 @@
 <p align="center">
   <a href="https://github.com/omaralbeik/UserDefaultsStore/actions"><img src="https://github.com/omaralbeik/UserDefaultsStore/workflows/UserDefaultsStore/badge.svg?branch=main" alt="Build Status"></a>
   <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/main/graph/badge.svg" alt="Test Coverage" /></a>
-  <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
-  <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
-  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
-  <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="Swift Package Manager compatible" /></a>
-  <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5-orange.svg" alt="Swift" /></a>
-  <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-10-blue.svg" alt="Xcode"></a>
+  <a href="https://swiftpackageindex.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fomaralbeik%2FUserDefaultsStore%2Fbadge%3Ftype%3Dswift-versions" alt="Swift versions" /></a>
+  <a href="https://swiftpackageindex.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fomaralbeik%2FUserDefaultsStore%2Fbadge%3Ftype%3Dplatforms" alt="Platforms" /></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
 
 # tl;dr
 You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is an easy and very light way to store and retrieve -**reasonable amount 😅**- of `Codable` objects, in a couple lines of code!
+
+---
+
+## New in v3.0
+
+- Both `UserDefaultsStore` and `SingleUserDefaultsStore` are thread safe!
+- **BREAKING**: Use of custom encoder/decoder has been removed.
+- **BREAKING**: Snapshots have been removed.
 
 ---
 
@@ -27,7 +31,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "2.1.0")
+    .package(url: "https://github.com/omaralbeik/UserDefaultsStore.git", from: "3.0.0")
 ]
 ```
 
@@ -39,7 +43,7 @@ $ swift build
 
 ### Manually
 
-Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources) folder to your Xcode project.
+Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources/UserDefaultsStore) folder to your Xcode project.
 
 ---
 
@@ -125,17 +129,11 @@ laptops.deleteAll()
 
 // Know how many objects are stored in a store
 let usersCount = usersStore.objectsCount
-
-// Create a snapshot
-let snapshot = usersStore.generateSnapshot()
-
-// Restore a pre-generated snapshot
-try? usersStore.restoreSnapshot(snapshot)
 ```
 
 ## Looking to store a single item only?
 
-Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/main/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
+Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources/UserDefaultsStore/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
 
 ## Requirements
 
