@@ -133,12 +133,6 @@ laptops.deleteAll()
 
 // Know how many objects are stored in a store
 let usersCount = usersStore.objectsCount
-
-// Create a snapshot
-let snapshot = usersStore.generateSnapshot()
-
-// Restore a pre-generated snapshot
-try? usersStore.restoreSnapshot(snapshot)
 ```
 
 ## Looking to store a single item only?
