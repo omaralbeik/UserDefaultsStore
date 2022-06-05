@@ -1,17 +1,17 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/master/Assets/readme-logo.svg" title="UserDefaultsStore">
+  <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/main/Assets/readme-logo.svg" title="UserDefaultsStore">
 </p>
 
 <p align="center">
-  <a href="https://github.com/omaralbeik/UserDefaultsStore/actions"><img src="https://github.com/omaralbeik/UserDefaultsStore/workflows/UserDefaultsStore/badge.svg?branch=master" alt="Build Status"></a>
-  <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/master/graph/badge.svg" alt="Test Coverage" /></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore/actions"><img src="https://github.com/omaralbeik/UserDefaultsStore/workflows/UserDefaultsStore/badge.svg?branch=main" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/omaralbeik/UserDefaultsStore"><img src="https://codecov.io/gh/omaralbeik/UserDefaultsStore/branch/main/graph/badge.svg" alt="Test Coverage" /></a>
   <a href="https://github.com/omaralbeik/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/p/UserDefaultsStore.svg?style=flat" alt="Platforms" /></a>
   <a href="https://cocoapods.org/pods/UserDefaultsStore"><img src="https://img.shields.io/cocoapods/v/UserDefaultsStore.svg" alt="Cocoapods" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
   <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="Swift Package Manager compatible" /></a>
   <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5-orange.svg" alt="Swift" /></a>
   <a href="https://developer.apple.com/xcode"><img src="https://img.shields.io/badge/Xcode-10-blue.svg" alt="Xcode"></a>
-  <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
+  <a href="https://github.com/omaralbeik/UserDefaultsStore/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-red.svg" alt="MIT"></a>
 </p>
 
 # tl;dr
@@ -39,7 +39,7 @@ $ swift build
 
 ### Manually
 
-Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/master/Sources) folder to your Xcode project.
+Add the [Sources](https://github.com/omaralbeik/UserDefaultsStore/tree/main/Sources) folder to your Xcode project.
 
 ---
 
@@ -135,7 +135,7 @@ try? usersStore.restoreSnapshot(snapshot)
 
 ## Looking to store a single item only?
 
-Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/master/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
+Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/blob/main/Sources/SingleUserDefaultsStore.swift), it enables storing and retrieving a single value of `Int`, `Double`, `String`, or any `Codable` type.
 
 ## Requirements
 
@@ -147,7 +147,7 @@ Use [`SingleUserDefaultsStore`](https://github.com/omaralbeik/UserDefaultsStore/
 
 Special thanks to:
 - [Paul Hudson](https://twitter.com/twostraws) for his [article](https://www.hackingwithswift.com/articles/57/how-swift-keypaths-let-us-write-more-natural-code) on how to use Swift keypaths to write more natural code.
-- [Batuhan Saka](https://github.com/strawb3rryx7) for translating this document into [Turkish](https://github.com/omaralbeik/UserDefaultsStore/blob/master/README_TR.md).
+- [Batuhan Saka](https://github.com/strawb3rryx7) for helping with translation into Turkish
 
 ## Credits
 
@@ -156,4 +156,4 @@ Icon made by [freepik](https://www.flaticon.com/authors/freepik) from [flaticon.
 
 ## License
 
-UserDefaultsStore is released under the MIT license. See [LICENSE](https://github.com/omaralbeik/UserDefaultsStore/blob/master/LICENSE) for more information.
+UserDefaultsStore is released under the MIT license. See [LICENSE](https://github.com/omaralbeik/UserDefaultsStore/blob/main/LICENSE) for more information.
