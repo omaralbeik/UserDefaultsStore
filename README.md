@@ -23,7 +23,7 @@ You love Swift's `Codable` protocol and use it everywhere, who doesn't! Here is 
 
 - Both `UserDefaultsStore` and `SingleUserDefaultsStore` are thread safe!
 - **BREAKING**: Use of custom encoder/decoder has been removed.
-- **BREAKING**: Snapshots has been removed.
+- **BREAKING**: Snapshots have been removed.
 
 ---
 
