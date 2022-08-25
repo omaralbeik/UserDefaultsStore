@@ -1,3 +1,9 @@
+<h1 align="center">⚠️ Deprecated ⚠️</h1>
+
+<p align="center">Please use the new <a href="https://github.com/omaralbeik/Stores" target="_blank">Stores</a> library instead.</p>
+
+---
+
 <p align="center">
   <img src="https://cdn.rawgit.com/omaralbeik/UserDefaultsStore/main/Assets/readme-logo.svg" title="UserDefaultsStore">
 </p>
